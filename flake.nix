@@ -61,6 +61,11 @@
             enable = true;
             terminal = "xterm-256color";
           };
+	   
+          programs.exa = {
+            enable = true;
+            enableAliases = true;
+          };
 
 	  programs.fish = {
             enable = true;
