@@ -38,7 +38,8 @@
 
           home.packages = with pkgs; [
             openssh 
-	    bashInteractive
+            bashInteractive
+            fishPlugins.foreign-env
           ];
 
           programs.git = {
@@ -57,10 +58,20 @@
             terminal = "xterm-256color";
           };
 
-          programs.bash = {
+	  programs.fish = {
             enable = true;
-	    profileExtra = builtins.readFile ./bash-profileExtra;
-          };
+            shellInit = ''
+	      # add pkgs.fishPlugins.foreign-env to fish_function_path
+              set --prepend fish_function_path "${pkgs.fishPlugins.foreign-env}/share/fish/vendor_functions.d"
+
+              # add nix stuff to path (for non nixos install)
+	      fenv source $HOME/.nix-profile/etc/profile.d/nix.sh
+
+              contains $HOME/.nix-defexpr/channels $NIX_PATH; or set -x NIX_PATH "$HOME/.nix-defexpr/channels" $NIX_PATH
+	      #fenv export NIX_PATH=$HOME/.nix-defexpr/channels:$NIX_PATH
+	      #fenv source $HOME/.profile
+	    '';
+	  };
 	};
       };
     };
