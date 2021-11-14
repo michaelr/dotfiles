@@ -8,6 +8,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    fish-nix-env = {
+      url = github:lilyball/nix-env.fish;
+      flake = false;
+    };
   };
   
   outputs = { self, ... }@inputs:
@@ -39,7 +44,6 @@
           home.packages = with pkgs; [
             openssh 
             bashInteractive
-            fishPlugins.foreign-env
           ];
 
           programs.git = {
@@ -60,16 +64,22 @@
 
 	  programs.fish = {
             enable = true;
+	    plugins = [
+              {
+                name = "foreign-env";
+                src = pkgs.fishPlugins.foreign-env.src;
+              }        
+
+	      # this is only needed for non NixOS installs
+              {
+                name = "nix-env";
+                src = inputs.fish-nix-env;
+              }        
+            ];
+
             shellInit = ''
-	      # add pkgs.fishPlugins.foreign-env to fish_function_path
-              set --prepend fish_function_path "${pkgs.fishPlugins.foreign-env}/share/fish/vendor_functions.d"
-
-              # add nix stuff to path (for non nixos install)
-	      fenv source $HOME/.nix-profile/etc/profile.d/nix.sh
-
-              contains $HOME/.nix-defexpr/channels $NIX_PATH; or set -x NIX_PATH "$HOME/.nix-defexpr/channels" $NIX_PATH
-	      #fenv export NIX_PATH=$HOME/.nix-defexpr/channels:$NIX_PATH
-	      #fenv source $HOME/.profile
+	      # this is only needed for non NixOS installs
+	      fenv export NIX_PATH=\$HOME/.nix-defexpr/channels\''${NIX_PATH:+:}\$NIX_PATH
 	    '';
 	  };
 	};

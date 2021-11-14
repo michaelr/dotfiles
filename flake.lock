@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "fish-nix-env": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1612943836,
+        "narHash": "sha256-qt63SHfHWQnDBvaL+NOVgGA1Pt6tbWhV+1op0JoQNMM=",
+        "owner": "lilyball",
+        "repo": "nix-env.fish",
+        "rev": "00c6cc762427efe08ac0bd0d1b1d12048d3ca727",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lilyball",
+        "repo": "nix-env.fish",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -129,6 +145,7 @@
     },
     "root": {
       "inputs": {
+        "fish-nix-env": "fish-nix-env",
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2"
