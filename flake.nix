@@ -38,6 +38,7 @@
 
           home.packages = with pkgs; [
             openssh 
+	    bashInteractive
           ];
 
           programs.git = {
@@ -56,7 +57,11 @@
             terminal = "xterm-256color";
           };
 
-        };
+          programs.bash = {
+            enable = true;
+	    profileExtra = builtins.readFile ./bash-profileExtra;
+          };
+	};
       };
     };
   };
