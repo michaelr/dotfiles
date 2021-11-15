@@ -5,7 +5,7 @@ vim.g.bufferline = {
   tabpages = false,
   clickable = true,
   closable = false,
-  icons = 'numbers',
+  icons = true,
   icon_custom_colors = true,
 
   -- Sets the maximum buffer name length.
