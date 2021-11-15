@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "fish-theme-bobthefish": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1636121815,
+        "narHash": "sha256-jpp+5Cif3SiV2unilQTXGGiav9ntPKpu1mCmXxpgEFo=",
+        "owner": "oh-my-fish",
+        "repo": "theme-bobthefish",
+        "rev": "332f23abd7a095d5b2c024a061af7b890a4f0c20",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oh-my-fish",
+        "repo": "theme-bobthefish",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -146,6 +162,7 @@
     "root": {
       "inputs": {
         "fish-nix-env": "fish-nix-env",
+        "fish-theme-bobthefish": "fish-theme-bobthefish",
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2"
