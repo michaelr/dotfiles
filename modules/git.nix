@@ -13,6 +13,9 @@
         pager = "delta";
       };
       pull.ff = "only";
+      aliases = {
+        co = "checkout";
+      };
       delta = {
         features = "side-by-side line-numbers decorations";
       };
