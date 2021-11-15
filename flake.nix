@@ -49,22 +49,13 @@
             home.packages = with pkgs; [
               openssh
               ripgrep
+              less # busybox version is limited
             ];
 
             imports = [
               ./modules/nvim
+              ./modules/git.nix
             ];
-
-            programs.git = {
-              enable = true;
-              userName = "Michael Reddick";
-              userEmail = "michael.reddick@gmail.com";
-            };
-
-            #          programs.neovim = {
-            #            enable = true;
-            #            vimAlias = true; 
-            #          };
 
             programs.tmux = {
               enable = true;
