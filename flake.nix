@@ -14,7 +14,7 @@
       flake = false;
     };
   };
-  
+
   outputs = { self, ... }@inputs:
     let
       overlays = [
@@ -23,72 +23,82 @@
     in
 
     {
-    homeConfigurations = {
-      wsl = inputs.home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-linux";
-        homeDirectory = "/home/michaelr";
-        username = "michaelr";
+      homeConfigurations = {
+        wsl = inputs.home-manager.lib.homeManagerConfiguration {
+          system = "x86_64-linux";
+          homeDirectory = "/home/michaelr";
+          username = "michaelr";
 
-        configuration = { config, lib, pkgs, ... }: {
+          configuration = { config, lib, pkgs, ... }: {
 
-          xdg.configFile."nix/nix.conf".text = ''
-            experimental-features = nix-command flakes ca-references
-          '';
+            #NOTE:Here we are injecting colorscheme so that it is passed down all the imports
+            _module.args = {
+              colorscheme = (import ./colorschemes/dracula.nix);
+            };
 
-          nixpkgs.config = { allowUnfree = true; };
-	  nixpkgs.overlays = overlays;
+            xdg.configFile."nix/nix.conf".text = ''
+              experimental-features = nix-command flakes ca-references
+            '';
 
-          # Let Home Manager install and manage itself.
-          programs.home-manager.enable = true;
+            nixpkgs.config = { allowUnfree = true; };
+            nixpkgs.overlays = overlays;
 
-          home.packages = with pkgs; [
-            openssh 
-            bashInteractive
-          ];
+            # Let Home Manager install and manage itself.
+            programs.home-manager.enable = true;
 
-          programs.git = {
-            enable = true;
-            userName = "Michael Reddick";
-            userEmail = "michael.reddick@gmail.com";
-      	  };
-
-          programs.neovim = {
-            enable = true;
-            vimAlias = true; 
-          };
-	   
-          programs.tmux = {
-            enable = true;
-            terminal = "xterm-256color";
-          };
-	   
-          programs.exa = {
-            enable = true;
-            enableAliases = true;
-          };
-
-	  programs.fish = {
-            enable = true;
-	    plugins = [
-              {
-                name = "foreign-env";
-                src = pkgs.fishPlugins.foreign-env.src;
-              }        
-
-	      # this is only needed for non NixOS installs
-              {
-                name = "nix-env";
-                src = inputs.fish-nix-env;
-              }        
+            home.packages = with pkgs; [
+              openssh
+              bashInteractive
+              ripgrep
             ];
 
-            shellInit = ''
-	      # this is only needed for non NixOS installs
-	      fenv export NIX_PATH=\$HOME/.nix-defexpr/channels\''${NIX_PATH:+:}\$NIX_PATH
-	    '';
-	  };
-	};
+            imports = [
+              ./modules/nvim
+            ];
+
+            programs.git = {
+              enable = true;
+              userName = "Michael Reddick";
+              userEmail = "michael.reddick@gmail.com";
+            };
+
+            #          programs.neovim = {
+            #            enable = true;
+            #            vimAlias = true; 
+            #          };
+
+            programs.tmux = {
+              enable = true;
+              terminal = "xterm-256color";
+            };
+
+            programs.exa = {
+              enable = true;
+              enableAliases = true;
+            };
+
+            programs.fish = {
+              enable = true;
+              plugins = [
+                {
+                  name = "foreign-env";
+                  src = pkgs.fishPlugins.foreign-env.src;
+                }
+
+                # this is only needed for non NixOS installs
+                {
+                  name = "nix-env";
+                  src = inputs.fish-nix-env;
+                }
+              ];
+
+              shellInit = ''
+                	      # this is only needed for non NixOS installs
+                	      fenv export NIX_PATH=\$HOME/.nix-defexpr/channels\''${NIX_PATH:+:}\$NIX_PATH
+                	    '';
+            };
+          };
+        };
       };
     };
-  };
 }
