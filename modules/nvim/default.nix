@@ -98,6 +98,9 @@ in
       # General Deps
       popup-nvim
       plenary-nvim
+
+      # jj/jk to escape
+      better-escape-nvim
     ];
 
     # cmake = {"${pkgs.cmake-language-server}/bin/cmake-language-server"},
@@ -141,6 +144,7 @@ in
         ${builtins.readFile ./git.lua}
         ${builtins.readFile ./todo.lua}
         ${builtins.readFile ./which_key.lua}
+        ${builtins.readFile ./better_escape.lua}
 
       EOF
 
