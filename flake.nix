@@ -108,10 +108,17 @@
                 config = "nvim $HOME/.dotfiles";
               };
 
+              interactiveShellInit = ''
+                # disable fish greeting
+                set --universal --erase fish_greeting
+                function fish_greeting; end
+                funcsave fish_greeting
+              '';
+
               shellInit = ''
-                	      # this is only needed for non NixOS installs
-                	      fenv export NIX_PATH=\$HOME/.nix-defexpr/channels\''${NIX_PATH:+:}\$NIX_PATH
-                	    '';
+                # this is only needed for non NixOS installs
+                fenv export NIX_PATH=\$HOME/.nix-defexpr/channels\''${NIX_PATH:+:}\$NIX_PATH
+              '';
             };
           };
         };
