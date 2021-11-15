@@ -50,6 +50,11 @@
               openssh
               ripgrep
               less # busybox version is limited
+              fzf
+              htop
+              jq
+              fd
+              bat
             ];
 
             imports = [
@@ -73,6 +78,11 @@
                 {
                   name = "foreign-env";
                   src = pkgs.fishPlugins.foreign-env.src;
+                }
+
+                {
+                  name = "fzf";
+                  src = pkgs.fishPlugins.fzf-fish.src;
                 }
 
                 # this is only needed for non NixOS installs
