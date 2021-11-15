@@ -69,7 +69,7 @@
 
             programs.exa = {
               enable = true;
-              enableAliases = true;
+              enableAliases = false;
             };
 
             programs.fish = {
@@ -91,6 +91,22 @@
                   src = inputs.fish-nix-env;
                 }
               ];
+
+              shellAliases = {
+
+                gc = "git commit";
+                gs = "git status";
+                ga = "git add";
+                gd = "git diff";
+
+                ls = "exa";
+                ll = "exa -l";
+                la = "exa -a";
+                lt = "exa --tree";
+                lla = "exa -la";
+
+                config = "nvim $HOME/.dotfiles";
+              };
 
               shellInit = ''
                 	      # this is only needed for non NixOS installs
