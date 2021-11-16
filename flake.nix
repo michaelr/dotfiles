@@ -36,7 +36,6 @@
 
           configuration = { config, lib, pkgs, ... }: {
 
-            #NOTE:Here we are injecting colorscheme so that it is passed down all the imports
             _module.args = {
               colorscheme = (import ./colorschemes/dracula.nix);
             };
@@ -127,10 +126,13 @@
                 function fish_greeting; end
                 funcsave fish_greeting
 
+                # theme-bobthefish settings
                 set -g theme_color_scheme dracula
                 set -g theme_nerd_fonts yes
-                set -g theme_project_dir_length 1
-                set -g theme_date_format "+%a %b %d %l:%M%p"
+                set -g theme_date_format "+%l:%M%p %a %b %d"
+                set -g theme_display_cmd_duration no
+
+                # this was causing slowdowns on ruby
                 set -g theme_display_ruby no
 
               '';
