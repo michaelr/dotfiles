@@ -165,7 +165,24 @@
         "fish-theme-bobthefish": "fish-theme-bobthefish",
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "wsl-open": "wsl-open"
+      }
+    },
+    "wsl-open": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1611118005,
+        "narHash": "sha256-amqkDXdgIqGjRZMkltwco0UAI++G0RY/MxLXwtlxogE=",
+        "owner": "4U6U57",
+        "repo": "wsl-open",
+        "rev": "6419bb63845acd0533f30bdc8258f8df5fbb25cb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "4U6U57",
+        "repo": "wsl-open",
+        "type": "github"
       }
     }
   },

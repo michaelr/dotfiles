@@ -18,6 +18,12 @@
       url = github:oh-my-fish/theme-bobthefish;
       flake = false;
     };
+
+    wsl-open = {
+      url = github:4U6U57/wsl-open;
+      flake = false;
+    };
+
   };
 
   outputs = { self, ... }@inputs:
@@ -49,6 +55,8 @@
 
             # Let Home Manager install and manage itself.
             programs.home-manager.enable = true;
+
+            home.file.".local/bin/wsl-open.sh".source = "${inputs.wsl-open}/wsl-open.sh";
 
             home.packages = with pkgs; [
               openssh
@@ -120,6 +128,9 @@
                 # reload history - to use commands from a different fish shell
                 hr = "history --merge";
 
+                # to make open command work on WSL
+                open = "wsl-open.sh";
+
                 config = "nvim $HOME/.dotfiles";
               };
 
@@ -141,6 +152,8 @@
               '';
 
               shellInit = ''
+                fish_add_path ~/.local/bin
+
                 # this is only needed for non NixOS installs
                 fenv export NIX_PATH=\$HOME/.nix-defexpr/channels\''${NIX_PATH:+:}\$NIX_PATH
               '';
