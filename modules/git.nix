@@ -1,9 +1,15 @@
-{ config, pkgs, libs, ... }:
+{ config, pkgs, libs, colorscheme, ... }:
 {
   home.packages = with pkgs; [
     git-crypt
     gitAndTools.delta
   ];
+
+  programs.bat = {
+    enable = true;
+    config.theme = colorscheme.bat-theme-name;
+  };
+
   programs.git = {
     enable = true;
     userName = "Michael Reddick";
@@ -18,11 +24,15 @@
       };
       delta = {
         features = "side-by-side line-numbers decorations";
+        minus-style = "syntax \"#901011\"";
+        minus-emph-style = "syntax \"#3f0001\"";
+        plus-style = "syntax \"#006000\"";
+        plus-emph-style = "syntax \"#002800\"";
       };
       "delta \"decorations\"" = {
-        commit-decoration-style = "bold yellow box ul";
-        file-style = "bold yellow";
-        file-decoration-style = "none";
+        commit-decoration-style = "box ul";
+        file-style = "bold";
+        true-color = "always";
       };
     };
   };

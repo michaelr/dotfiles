@@ -57,7 +57,6 @@
               htop
               jq
               fd
-              bat
 
               # busybox versions of core utilities are limited
               coreutils
