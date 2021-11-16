@@ -117,6 +117,9 @@
                 lt = "exa --tree";
                 lla = "exa -la";
 
+                # reload history - to use commands from a different fish shell
+                hr = "history --merge";
+
                 config = "nvim $HOME/.dotfiles";
               };
 
@@ -132,7 +135,7 @@
                 set -g theme_date_format "+%l:%M%p %a %b %d"
                 set -g theme_display_cmd_duration no
 
-                # this was causing slowdowns on ruby
+                # this was causing slowdowns on wsl
                 set -g theme_display_ruby no
 
               '';
