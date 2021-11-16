@@ -2,6 +2,10 @@ vim.o.mouse = "a"
 vim.o.cursorline = true
 vim.g.mapleader = " "
 
+-- use system clipboard
+-- NOTE: for WSL win32yank.exe must been in the path and xclip must not be
+vim.o.clipboard = "unnamedplus"
+
 -- More natural pane splitting
 vim.o.splitbelow = true
 vim.o.splitright = true
