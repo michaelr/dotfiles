@@ -15,16 +15,28 @@
     userName = "Michael Reddick";
     userEmail = "michael.reddick@gmail.com";
     extraConfig = {
+
       core = {
         pager = "delta";
       };
+
       pull.ff = "only";
+      push.default = "current";
+
       alias = {
         co = "checkout";
         ll = "log --oneline";
         st = "status -sb";
-        undo = "reset --soft HEAD~1";
+        p = "git pull --ff-only";
+        prb = "git pull --rebase";
+
+
+        # an alternative to git worktree
+        # https://nicolaiarocci.com/git-worktree-vs-git-savepoints/
+        save = "!git add -A && git commit -v -m 'SAVEPOINT'";
+        undo = "reset HEAD^ --mixed";
       };
+
       delta = {
         features = "side-by-side line-numbers decorations";
         minus-style = "syntax \"#3F2E32\"";
@@ -32,6 +44,7 @@
         plus-style = "syntax \"#273732\"";
         plus-emph-style = "syntax \"#335D3C\"";
       };
+
       "delta \"decorations\"" = {
         commit-decoration-style = "box ul";
         file-style = "bold";
