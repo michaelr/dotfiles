@@ -25,11 +25,10 @@
 
       alias = {
         co = "checkout";
-        ll = "log --oneline";
+        l = "log --pretty=oneline -n 50 --graph --abbrev-commit";
         st = "status -sb";
         p = "git pull --ff-only";
         prb = "git pull --rebase";
-
 
         # an alternative to git worktree
         # https://nicolaiarocci.com/git-worktree-vs-git-savepoints/

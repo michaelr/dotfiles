@@ -113,12 +113,6 @@
 
               shellAliases = {
 
-                gc = "git commit";
-                gcm = "git commit -m";
-                gs = "git st";
-                ga = "git add";
-                gd = "git diff";
-
                 ls = "exa";
                 ll = "exa -l";
                 la = "exa -a";
@@ -134,11 +128,22 @@
                 config = "nvim $HOME/.dotfiles";
               };
 
+              shellAbbrs = {
+                gc = "git commit";
+                gcm = "git commit -m";
+                gs = "git st";
+                ga = "git add";
+                gd = "git diff";
+                gds = "git diff --staged";
+                gl = "git l";
+                gp = "git push";
+                gpl = "git pull";
+                gf = "git fetch";
+              };
+
               interactiveShellInit = ''
                 # disable fish greeting
-                set --universal --erase fish_greeting
-                function fish_greeting; end
-                funcsave fish_greeting
+                set -g fish_greeting ""
 
                 # theme-bobthefish settings
                 set -g theme_color_scheme dracula
