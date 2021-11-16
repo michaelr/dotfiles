@@ -19,7 +19,7 @@
         pager = "delta";
       };
       pull.ff = "only";
-      aliases = {
+      alias = {
         co = "checkout";
       };
       delta = {
