@@ -22,6 +22,7 @@
       alias = {
         co = "checkout";
         ll = "log --oneline";
+        st = "status -sb";
         undo = "reset --soft HEAD~1";
       };
       delta = {
