@@ -106,7 +106,7 @@
               shellAliases = {
 
                 gc = "git commit";
-                gs = "git status";
+                gs = "git status -sb";
                 ga = "git add";
                 gd = "git diff";
 

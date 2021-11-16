@@ -21,6 +21,8 @@
       pull.ff = "only";
       alias = {
         co = "checkout";
+        ll = "log --oneline";
+        undo = "reset --soft HEAD~1";
       };
       delta = {
         features = "side-by-side line-numbers decorations";
