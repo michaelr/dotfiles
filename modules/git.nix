@@ -26,10 +26,10 @@
       };
       delta = {
         features = "side-by-side line-numbers decorations";
-        minus-style = "syntax \"#901011\"";
-        minus-emph-style = "syntax \"#3f0001\"";
-        plus-style = "syntax \"#006000\"";
-        plus-emph-style = "syntax \"#002800\"";
+        minus-style = "syntax \"#3F2E32\"";
+        minus-emph-style = "syntax \"#5D3437\"";
+        plus-style = "syntax \"#273732\"";
+        plus-emph-style = "syntax \"#335D3C\"";
       };
       "delta \"decorations\"" = {
         commit-decoration-style = "box ul";
