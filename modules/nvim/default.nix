@@ -49,33 +49,35 @@ in
     plugins = with pkgs.vimPlugins; [
       # Appearance
       indent-blankline-nvim
-      barbar-nvim
+      barbar-nvim # tabline
       nvim-tree-lua
       nvim-web-devicons
       lualine-nvim
-      one-nvim
       dracula-vim
 
       # Programming
       which-key-nvim
-      vim-haskellConcealPlus # vimscript
       vim-nix # vimscript
+
+      ## lsp
+      nvim-lspconfig
+      cmp-nvim-lsp
       lspkind-nvim
+      lsp_signature-nvim
+
       nvim-treesitter
       nvim-treesitter-refactor
       nvim-treesitter-textobjects
-      nvim-lspconfig
-      nvim-lightbulb
-      lsp_signature-nvim
 
       ## Autocompletion setup
       nvim-cmp
       cmp-path
       cmp-buffer
-      cmp-nvim-lsp
+      cmp-cmdline
       cmp-nvim-lua
       cmp-treesitter
-      cmp-calc
+      luasnip # for cmp
+      cmp_luasnip
 
       rust-tools-nvim
       symbols-outline-nvim
@@ -101,6 +103,8 @@ in
 
       # jj/jk to escape
       better-escape-nvim
+
+
     ];
 
     # cmake = {"${pkgs.cmake-language-server}/bin/cmake-language-server"},
