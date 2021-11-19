@@ -114,10 +114,10 @@
               shellAliases = {
 
                 ls = "exa";
-                ll = "exa -l";
+                ll = "exa -lg";
                 la = "exa -a";
                 lt = "exa --tree";
-                lla = "exa -la";
+                lla = "exa -lag";
 
                 # reload history - to use commands from a different fish shell
                 hr = "history --merge";
