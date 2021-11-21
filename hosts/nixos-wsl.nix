@@ -1,3 +1,5 @@
+{ wsl-open, fish-theme-bobthefish }:
+
 { lib, pkgs, config, modulesPath, ... }:
 
 with lib;
@@ -22,12 +24,19 @@ in
   };
 
   home-manager.users.${defaultUser} = {
+    _module.args = {
+      colorscheme = (import ../colorschemes/dracula.nix);
+    };
+
     imports = [
       # ../users/profiles/bat.nix
       # ../users/profiles/pkgs/cli.nix
       # ../users/profiles/programs.nix
       # ../users/will/pkgs/cli.nix
       #     ../users/will/xdg.nix
+
+      ../modules/nvim
+      ../modules/git.nix
     ];
 
     home = rec {
@@ -39,29 +48,106 @@ in
         EDITOR = "nvim";
       };
 
-      packages = [
-        pkgs.git
+      file.".local/bin/wsl-open.sh".source = "${wsl-open}/wsl-open.sh";
+
+      packages = with pkgs; [
+        ripgrep
+        fzf
+        htop
+        jq
+
       ];
 
-      # file = {
-      #   ".config".source = ../config;
-      #   ".config".recursive = true;
-      # };
     };
 
-    # Add additional zsh settings for WSL2.
-    programs.zsh = {
-      localVariables = {
-        # LIBGL_ALWAYS_INDIRECT = 1;
-      };
+    programs.tmux = {
+      enable = true;
+      terminal = "xterm-256color";
+    };
+
+    programs.exa = {
+      enable = true;
+      enableAliases = false;
+    };
+
+    programs.fish = {
+      enable = true;
+      plugins = [
+        {
+          name = "foreign-env";
+          src = pkgs.fishPlugins.foreign-env.src;
+        }
+
+        {
+          name = "fzf";
+          src = pkgs.fishPlugins.fzf-fish.src;
+        }
+
+        {
+          name = "theme-bobthefish";
+          src = fish-theme-bobthefish;
+        }
+
+        # this is only needed for non NixOS installs
+        # {
+        #   name = "nix-env";
+        #   src = inputs.fish-nix-env;
+        # }
+      ];
 
       shellAliases = {
-        # em = ''
-        #   export DISPLAY=$(ip route | awk '/^default/{print $3; exit}'):0.0
-        #   setsid emacsclient --create-frame --alternate-editor emacs
-        # '';
+
+        ls = "exa";
+        ll = "exa -lg";
+        la = "exa -a";
+        lt = "exa --tree";
+        lla = "exa -lag";
+
+        # reload history - to use commands from a different fish shell
+        hr = "history --merge";
+
+        # to make open command work on WSL
+        open = "wsl-open.sh";
+
+        config = "nvim $HOME/.dotfiles";
       };
+
+      shellAbbrs = {
+        gc = "git commit";
+        gcm = "git commit -m";
+        gs = "git st";
+        ga = "git add";
+        gd = "git diff";
+        gds = "git diff --staged";
+        gl = "git l";
+        gp = "git push";
+        gpl = "git pull";
+        gf = "git fetch";
+      };
+
+      interactiveShellInit = ''
+        # disable fish greeting
+        set -g fish_greeting ""
+
+        # theme-bobthefish settings
+        set -g theme_color_scheme dracula
+        set -g theme_nerd_fonts yes
+        set -g theme_date_format "+%l:%M%p %a %b %d"
+        set -g theme_display_cmd_duration no
+
+        # this was causing slowdowns on wsl
+        set -g theme_display_ruby no
+
+      '';
+
+      shellInit = ''
+                fish_add_path ~/.local/bin
+
+                # this is only needed for non NixOS installs
+        #        fenv export NIX_PATH=\$HOME/.nix-defexpr/channels\''${NIX_PATH:+:}\$NIX_PATH
+      '';
     };
+
   };
 
   # WSL is closer to a container than anything else

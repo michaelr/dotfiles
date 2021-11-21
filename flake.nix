@@ -38,7 +38,12 @@
         nixos-wsl = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./hosts/nixos-wsl.nix
+            (import ./hosts/nixos-wsl.nix
+              {
+                wsl-open = inputs.wsl-open;
+                fish-theme-bobthefish = inputs.fish-theme-bobthefish;
+              })
+
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {
