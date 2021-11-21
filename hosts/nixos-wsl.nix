@@ -17,7 +17,7 @@ in
   users.users.${defaultUser} = {
     uid = 1000;
     isNormalUser = true;
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
     extraGroups = [ "wheel" ];
   };
 
@@ -67,13 +67,19 @@ in
   # WSL is closer to a container than anything else
   boot.isContainer = true;
 
-  environment.etc.hosts.enable = false;
-  networking.dhcpcd.enable = false;
 
-  # Only disable resolv.conf generation when allowing wsl to generate it
+  environment.extraInit = ''PATH="$PATH:$WSLPATH"'';
+
+  # Install manpages and other documentation.
+  documentation.enable = true;
+
+  # Run tzupdate service to auto-detect the time zone.
+  services.tzupdate.enable = true;
+
+  environment.etc.hosts.enable = false;
   environment.etc."resolv.conf".enable = false;
 
-  #networking = import ../secrets/work-network-settings.nix;
+  networking.dhcpcd.enable = false;
 
   users.users.root = {
     shell = "${syschdemd}/bin/syschdemd";

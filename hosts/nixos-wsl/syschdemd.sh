@@ -36,8 +36,20 @@ userShell=$($sw/getent passwd @defaultUser@ | $sw/cut -d: -f7)
 if [[ $# -gt 0 ]]; then
     # wsl seems to prefix with "-c"
     shift
-    cmd="$@"
+
+    # escape command string for inclusion in shell single quotes
+    cmdStr="$(echo "$*" | $sw/sed -e "s_'_'\\\\''_g")"
+
+    cmd="$userShell -l -c '$cmdStr'"
 else
-    cmd="$userShell"
+    cmd="$userShell -l"
 fi
-exec $sw/nsenter -t $(< /run/systemd.pid) -p -m -- $sw/machinectl -q --uid=@defaultUser@ shell .host /bin/sh -c "cd \"$PWD\"; exec $cmd"
+
+
+# Pass external environment but filter variables specific to root user.
+exportCmd="$(export -p | $sw/grep -vE ' (HOME|LOGNAME|SHELL|USER)='); export WSLPATH=\"$PATH\""
+
+exec $sw/nsenter -t $(< /run/systemd.pid) -p -m -- $sw/machinectl -q \
+	--uid=@defaultUser@ shell .host /bin/sh -c \
+	"cd \"$PWD\"; $exportCmd; exec $cmd"
+
