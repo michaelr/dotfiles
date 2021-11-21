@@ -26,7 +26,7 @@
 
   };
 
-  outputs = { self, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
@@ -34,6 +34,25 @@
     in
 
     {
+      nixosConfigurations = {
+        nixos-wsl = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/nixos-wsl.nix
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+              };
+              networking.hostName = "nixos-wsl";
+            }
+            { nixpkgs.overlays = overlays; }
+          ];
+        };
+
+      };
+
       homeConfigurations = {
         wsl = inputs.home-manager.lib.homeManagerConfiguration {
           system = "x86_64-linux";
