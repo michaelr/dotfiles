@@ -16,6 +16,8 @@ in
     ./nixos-wsl/build-tarball.nix
   ];
 
+  # time.timeZone = "America/Chicago";
+
   users.users.${defaultUser} = {
     uid = 1000;
     isNormalUser = true;
