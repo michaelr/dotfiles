@@ -42,6 +42,7 @@
               {
                 wsl-open = inputs.wsl-open;
                 fish-theme-bobthefish = inputs.fish-theme-bobthefish;
+                fish-nix-env = inputs.fish-nix-env;
               })
 
             inputs.home-manager.nixosModules.home-manager

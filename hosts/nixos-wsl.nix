@@ -1,4 +1,4 @@
-{ wsl-open, fish-theme-bobthefish }:
+{ wsl-open, fish-theme-bobthefish, fish-nix-env }:
 
 { lib, pkgs, config, modulesPath, ... }:
 
@@ -16,12 +16,16 @@ in
     ./nixos-wsl/build-tarball.nix
   ];
 
-  # time.timeZone = "America/Chicago";
+  time.timeZone = "America/Chicago";
+
+  users.mutableUsers = false;
 
   users.users.${defaultUser} = {
     uid = 1000;
     isNormalUser = true;
-    shell = pkgs.zsh;
+    # on nixos-wsl you have to use the nix-env fish plugin if shell is set to fish
+    shell = pkgs.fish;
+    password = "michaelr";
     extraGroups = [ "wheel" ];
   };
 
@@ -40,6 +44,7 @@ in
       ../modules/nvim
       ../modules/git.nix
     ];
+    xdg.enable = true;
 
     home = rec {
       stateVersion = "21.11";
@@ -90,11 +95,11 @@ in
           src = fish-theme-bobthefish;
         }
 
-        # this is only needed for non NixOS installs
-        # {
-        #   name = "nix-env";
-        #   src = inputs.fish-nix-env;
-        # }
+        # this is only needed for non-NixOS or for NixOS-WSL installs
+        {
+          name = "nix-env";
+          src = fish-nix-env;
+        }
       ];
 
       shellAliases = {
@@ -128,6 +133,7 @@ in
       };
 
       interactiveShellInit = ''
+        set -g SHELL ${pkgs.fish}/bin/fish
         # disable fish greeting
         set -g fish_greeting ""
 
@@ -143,10 +149,15 @@ in
       '';
 
       shellInit = ''
-                fish_add_path ~/.local/bin
+        fish_add_path ~/.local/bin
 
-                # this is only needed for non NixOS installs
-        #        fenv export NIX_PATH=\$HOME/.nix-defexpr/channels\''${NIX_PATH:+:}\$NIX_PATH
+        # these shouldn't be needed but just for reference this will set the path right
+        # fish_add_path -m /etc/profiles/per-user/michaelr/bin/
+        # fish_add_path -m /run/current-system/sw/bin/
+        # fish_add_path -m /run/wrappers/bin/
+
+        # this is only needed for non NixOS installs
+        # fenv export NIX_PATH=\$HOME/.nix-defexpr/channels\''${NIX_PATH:+:}\$NIX_PATH
       '';
     };
 
@@ -161,9 +172,6 @@ in
   # Install manpages and other documentation.
   documentation.enable = true;
 
-  # Run tzupdate service to auto-detect the time zone.
-  services.tzupdate.enable = true;
-
   environment.etc.hosts.enable = false;
   environment.etc."resolv.conf".enable = false;
 
@@ -171,6 +179,7 @@ in
 
   users.users.root = {
     shell = "${syschdemd}/bin/syschdemd";
+    password = "root";
     # Otherwise WSL fails to login as root with "initgroups failed 5"
     extraGroups = [ "root" ];
   };
