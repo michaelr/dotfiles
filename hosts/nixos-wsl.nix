@@ -60,9 +60,13 @@ in
       packages = with pkgs; [
         ripgrep
         fzf
-        htop
         jq
 
+        htop
+        bottom
+
+        # l33t factor 5000
+        tmatrix
       ];
 
     };
@@ -73,6 +77,7 @@ in
       plugins = with pkgs.tmuxPlugins; [
         #        sensible
         #        yank
+        pain-control
         {
           plugin = dracula;
           extraConfig = ''
