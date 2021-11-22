@@ -86,6 +86,8 @@ in
       ];
 
       extraConfig = ''
+        set -ga terminal-overrides ",xterm-256color*:Tc"
+
         set -g mouse on
         set -g base-index 1
         set -g renumber-windows on
