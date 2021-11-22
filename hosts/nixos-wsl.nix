@@ -69,7 +69,34 @@ in
 
     programs.tmux = {
       enable = true;
-      terminal = "xterm-256color";
+      clock24 = true;
+      plugins = with pkgs.tmuxPlugins; [
+        #        sensible
+        #        yank
+        {
+          plugin = dracula;
+          extraConfig = ''
+            set -g @dracula-plugins "cpu-usage time"
+            set -g @dracula-show-powerline true
+            set -g @dracula-refresh-rate 10
+            set -g @dracula-show-left-icon session
+            set -g @dracula-show-timezone false
+          '';
+        }
+      ];
+
+      extraConfig = ''
+        set -g mouse on
+        set -g base-index 1
+        set -g renumber-windows on
+
+        unbind C-b
+        set-option -g prefix C-a
+        bind-key C-a send-prefix
+
+        bind r source-file ~/.config/tmux/tmux.conf
+      '';
+
     };
 
     programs.exa = {
