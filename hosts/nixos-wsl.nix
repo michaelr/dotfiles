@@ -86,7 +86,8 @@ in
       ];
 
       extraConfig = ''
-        set -ga terminal-overrides ",xterm-256color*:Tc"
+        #set -ga terminal-overrides ",xterm-256color*:Tc"
+        set -g default-terminal "screen-256color"
 
         set -g mouse on
         set -g base-index 1
