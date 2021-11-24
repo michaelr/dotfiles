@@ -23,10 +23,25 @@ in
   users.users.${defaultUser} = {
     uid = 1000;
     isNormalUser = true;
-    # on nixos-wsl you have to use the nix-env fish plugin if shell is set to fish
+    # NOTE: on nixos-wsl you have to use the nix-env fish plugin if $SHELL=fish
     shell = pkgs.fish;
     password = "michaelr";
     extraGroups = [ "wheel" ];
+  };
+
+  environment.systemPackages = with pkgs; [
+    # TODO: move this into a dev shell for frontend project
+    # and envoke with nix-shell --run fish -p nodejs-16_x
+    # or with https://github.com/nix-community/nix-direnv
+  ];
+
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
+    '';
   };
 
   home-manager.users.${defaultUser} = {
@@ -61,6 +76,7 @@ in
         ripgrep
         fzf
         jq
+        tree-sitter
 
         htop
         bottom
@@ -71,12 +87,18 @@ in
 
     };
 
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
     programs.tmux = {
       enable = true;
       clock24 = true;
       plugins = with pkgs.tmuxPlugins; [
         #        sensible
         #        yank
+        # TODO: Rip the keybindings I use out of pain-control
         pain-control
         {
           plugin = dracula;
@@ -91,7 +113,7 @@ in
       ];
 
       extraConfig = ''
-        #set -ga terminal-overrides ",xterm-256color*:Tc"
+        set -ga terminal-overrides ",xterm-256color*:Tc"
         set -g default-terminal "screen-256color"
 
         set -g mouse on
@@ -99,8 +121,8 @@ in
         set -g renumber-windows on
 
         unbind C-b
-        set-option -g prefix C-a
-        bind-key C-a send-prefix
+        set-option -g prefix C-Space
+        bind-key C-Space send-prefix
 
         bind r source-file ~/.config/tmux/tmux.conf
       '';
@@ -180,6 +202,9 @@ in
 
         # this was causing slowdowns on wsl
         set -g theme_display_ruby no
+
+        # direnv hook
+        direnv hook fish | source
 
       '';
 
