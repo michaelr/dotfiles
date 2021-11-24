@@ -8,6 +8,10 @@ in
     gcc
     # Clojure
     clojure
+    # elixir
+    elixir
+    #hex
+    #rebar3
     # go
     go
     # Haskell
@@ -129,12 +133,12 @@ in
           tsserver = {"${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server", "--stdio"},
           vimls = {"${pkgs.nodePackages.vim-language-server}/bin/vim-language-server", "--stdio"},
           yamlls = {"${pkgs.nodePackages.yaml-language-server}/bin/yaml-language-server", "--stdio"},
-
           prettier = "${pkgs.nodePackages.prettier}/bin/prettier",
           isort = "${pkgs.python3Packages.isort}/bin/isort",
           black = "${pkgs.python3Packages.black}/bin/black",
           lua_format = "${pkgs.luaformatter}/bin/lua-format", 
           rustfmt = "${pkgs.rustfmt}/bin/cargo-fmt",
+          elixirls = {"${pkgs.elixir_ls}/bin/elixir-ls"}
 
         }
 

@@ -6,6 +6,9 @@
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol
                                                                      .make_client_capabilities())
 
+require'lspconfig'.elixirls.setup{
+    cmd = lang_servers_cmd.elixirls
+}
 -- bash
 require'lspconfig'.bashls.setup {  cmd = lang_servers_cmd.bashls}
 
