@@ -70,22 +70,33 @@ in
         EDITOR = "nvim";
       };
 
-      file.".local/bin/wsl-open.sh".source = "${wsl-open}/wsl-open.sh";
-
       packages = with pkgs; [
         ripgrep
         fzf
         jq
         tree-sitter
+        glow # markdown previewer
+
+        exercism # coding exercises
 
         htop
         bottom
 
-        # l33t factor 5000
-        tmatrix
+        tmatrix # l33t factor 5000
       ];
 
+      file.".local/bin/wsl-open.sh".source = "${wsl-open}/wsl-open.sh";
+
     };
+
+
+    xdg.configFile."glow/glow.yml".text = ''
+      style: "auto"
+      local: false
+      mouse: true 
+      pager: true
+      width: 80
+    '';
 
     programs.direnv = {
       enable = true;
