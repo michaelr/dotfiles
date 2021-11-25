@@ -9,10 +9,6 @@ let
 in
 {
   imports = [
-    #../modules/unfree.nix
-    #    ../profiles/common/fonts.nix
-    #../profiles/common/nix-settings.nix
-    #../users/will/less.nix
     ./nixos-wsl/build-tarball.nix
   ];
 
@@ -30,9 +26,6 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    # TODO: move this into a dev shell for frontend project
-    # and envoke with nix-shell --run fish -p nodejs-16_x
-    # or with https://github.com/nix-community/nix-direnv
   ];
 
   nix = {
@@ -45,17 +38,12 @@ in
   };
 
   home-manager.users.${defaultUser} = {
+    # TODO: get rid of this hack
     _module.args = {
       colorscheme = (import ../colorschemes/dracula.nix);
     };
 
     imports = [
-      # ../users/profiles/bat.nix
-      # ../users/profiles/pkgs/cli.nix
-      # ../users/profiles/programs.nix
-      # ../users/will/pkgs/cli.nix
-      #     ../users/will/xdg.nix
-
       ../modules/nvim
       ../modules/git.nix
     ];
@@ -107,8 +95,6 @@ in
       enable = true;
       clock24 = true;
       plugins = with pkgs.tmuxPlugins; [
-        #        sensible
-        #        yank
         # TODO: Rip the keybindings I use out of pain-control
         pain-control
         {
