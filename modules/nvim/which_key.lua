@@ -96,6 +96,15 @@ local mappings = {
         t = {"<cmd>Telescope live_grep<cr>", "Text"},
         T = {"<cmd>TodoTelescope<cr>", "Todos"}
     },
+    t = {
+        name = "+Test",
+        f = {"<cmd>:TestFile<CR>", "File"},
+        l = {"<cmd>:TestLast<CR>", "Last"},
+        n = {"<cmd>:TestNearest<CR>", "Nearest"},
+        s = {"<cmd>:TestSuite<CR>", "Suite"},
+        v = {"<cmd>:TestVisit<CR>", "Last Visited File"}
+
+    },
     w = {
         name = "+Window",
         h = {"<C-w><C-h>", "Move to left window"},

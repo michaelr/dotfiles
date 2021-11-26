@@ -108,12 +108,16 @@ in
       # jj/jk to escape
       better-escape-nvim
 
+      # testing
+      vim-test
+
 
     ];
 
     # cmake = {"${pkgs.cmake-language-server}/bin/cmake-language-server"},
     extraConfig = ''
       ${builtins.readFile ./sane_defaults.vim}
+      ${builtins.readFile ./vim-test.vim}
 
       colorscheme ${colorscheme.vim-name}
 
