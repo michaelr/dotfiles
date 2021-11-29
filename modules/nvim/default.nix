@@ -111,6 +111,9 @@ in
       # testing
       vim-test
 
+      # elixir
+      vim-elixir
+
 
     ];
 
