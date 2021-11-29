@@ -65,7 +65,6 @@ in
 
       ## lsp
       nvim-lspconfig
-      cmp-nvim-lsp
       lspkind-nvim
       lsp_signature-nvim
 
@@ -77,8 +76,8 @@ in
       nvim-cmp
       cmp-path
       cmp-buffer
-      cmp-cmdline
       cmp-nvim-lua
+      cmp-nvim-lsp
       cmp-treesitter
       luasnip # for cmp
       cmp_luasnip

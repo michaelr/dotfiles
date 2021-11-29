@@ -104,15 +104,6 @@ cmp.setup({
     })
 })
 
-  cmp.setup.cmdline(':', {
-    sources = cmp.config.sources({
-      { name = 'path' }
-    }, {
-      { name = 'cmdline' }
-    })
-  })
-
-
 
 -- AUTO FORMATTING
 
