@@ -28,11 +28,6 @@ require'lspconfig'.dockerls.setup {cmd = lang_servers_cmd.dockerls}
 -- go
 require'lspconfig'.gopls.setup {cmd = lang_servers_cmd.gopls}
 
--- Haskell
-require'lspconfig'.hls.setup {
-    settings = {languageServerHaskell = {formattingProvider = "brittany"}},
-    cmd = lang_servers_cmd.hls
-}
 
 -- html
 require'lspconfig'.html.setup {capabilities = capabilities, cmd = lang_servers_cmd.html}
@@ -48,20 +43,6 @@ require'lspconfig'.sumneko_lua.setup {
 
 -- nix
 require'lspconfig'.rnix.setup {cmd = lang_servers_cmd.rnix}
-
--- Python
-require'lspconfig'.pyright.setup {cmd = lang_servers_cmd.pyright}
-
--- Rust
-require'rust-tools'.setup()
-require'lspconfig'.rust_analyzer.setup {
-    on_attach = function()
-        require'lsp_signature'.on_attach({
-            bind = true,
-            handler_opts = {border = 'single'}
-        })
-    end
-}
 
 -- TypeScript/JavaScript
 require'lspconfig'.tsserver.setup {cmd = lang_servers_cmd.tsserver}

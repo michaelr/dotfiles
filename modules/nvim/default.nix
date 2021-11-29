@@ -135,16 +135,13 @@ in
           hls = {"${pkgs.haskellPackages.haskell-language-server}/bin/haskell-language-server", "--lsp"},
           html = {"${pkgs.nodePackages.vscode-html-languageserver-bin}/bin/html-languageserver", "--stdio"},
           jsonls = {"${pkgs.nodePackages.vscode-json-languageserver-bin}/bin/json-languageserver", "--stdio"},
-          pyright = {"${pkgs.nodePackages.pyright}/bin/pyright-langserver", "--stdio"},
           rnix = {"${pkgs.rnix-lsp}/bin/rnix-lsp"},
           tsserver = {"${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server", "--stdio"},
           vimls = {"${pkgs.nodePackages.vim-language-server}/bin/vim-language-server", "--stdio"},
           yamlls = {"${pkgs.nodePackages.yaml-language-server}/bin/yaml-language-server", "--stdio"},
           prettier = "${pkgs.nodePackages.prettier}/bin/prettier",
           isort = "${pkgs.python3Packages.isort}/bin/isort",
-          black = "${pkgs.python3Packages.black}/bin/black",
           lua_format = "${pkgs.luaformatter}/bin/lua-format", 
-          rustfmt = "${pkgs.rustfmt}/bin/cargo-fmt",
           elixirls = {"${pkgs.elixir_ls}/bin/elixir-ls"}
 
         }
