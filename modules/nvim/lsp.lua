@@ -79,7 +79,19 @@ cmp.setup({
             require("luasnip").lsp_expand(args.body)
         end,
     },
-    formatting = {format = lspkind.cmp_format({with_text = true, maxwidth = 50})},
+    formatting = {
+        format = lspkind.cmp_format({
+            with_text = true,
+            maxwidth = 50,
+            menu = {
+                buffer = "[buf]",
+                nvim_lsp = "[lsp]",
+                nvim_lua = "[lua]",
+                path = "[path]",
+                luasnip = "[snip]",
+                treesitter = "[tsit]"
+            }
+    })},
     mapping = {
         ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
         ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
@@ -94,14 +106,15 @@ cmp.setup({
         }),
         ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})
     },
-    sources = cmp.config.sources({
+    --sources = cmp.config.sources({
+    sources = {
         { name = 'nvim_lsp' },
-        { name = 'nvim_lua' },
-        { name = 'luasnip' },
-    }, {
-        { name = 'buffer' },
+        { name = 'nvim_lua' }, -- only gets enabled in lua files
+        { name = 'treesitter' },
         { name = 'path' },
-    })
+        { name = 'luasnip' },
+        { name = 'buffer', keyword_length = 3 },
+    }
 })
 
 
