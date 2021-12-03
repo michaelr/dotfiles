@@ -21,6 +21,8 @@ in
     # JavaScript
     nodejs
     yarn
+    nodePackages.eslint_d
+    nodePackages.prettier
     # lua
     lua
     # markdown
@@ -67,6 +69,8 @@ in
       nvim-lspconfig
       lspkind-nvim
       lsp_signature-nvim
+      null-ls-nvim
+      nvim-lsp-ts-utils
 
       nvim-treesitter
       nvim-treesitter-refactor
@@ -138,7 +142,7 @@ in
           tsserver = {"${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server", "--stdio"},
           vimls = {"${pkgs.nodePackages.vim-language-server}/bin/vim-language-server", "--stdio"},
           yamlls = {"${pkgs.nodePackages.yaml-language-server}/bin/yaml-language-server", "--stdio"},
-          prettier = "${pkgs.nodePackages.prettier}/bin/prettier",
+          dls = "${pkgs.nodePackages.diagnostic-languageserver}/bin/diagnostic-languageserver",
           isort = "${pkgs.python3Packages.isort}/bin/isort",
           lua_format = "${pkgs.luaformatter}/bin/lua-format", 
           elixirls = {"${pkgs.elixir_ls}/bin/elixir-ls"}
