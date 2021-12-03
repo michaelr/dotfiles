@@ -24,10 +24,6 @@ vim.o.termguicolors = true
 
 vim.o.showmode = false
 
--- " COC recommended defaults
--- " if hidden is not set, TextEdit might fail.
-vim.o.hidden = true
-
 vim.o.backup = false
 vim.o.writebackup = false
 
@@ -50,3 +46,6 @@ vim.o.listchars = 'eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:.'
 vim.o.colorcolumn = '80'
 
 vim.o.shell = 'fish'
+
+-- turn off search highlight
+vim.o.hlsearch = false
