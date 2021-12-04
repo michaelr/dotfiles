@@ -61,6 +61,9 @@ in
       lualine-nvim
       dracula-vim
 
+      # tmux integration
+      vim-tmux-navigator
+
       # Programming
       which-key-nvim
       vim-nix # vimscript
@@ -124,6 +127,7 @@ in
     extraConfig = ''
       ${builtins.readFile ./sane_defaults.vim}
       ${builtins.readFile ./vim-test.vim}
+      ${builtins.readFile ./vim-tmux-navigator.vim}
 
       colorscheme ${colorscheme.vim-name}
 
