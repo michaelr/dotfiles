@@ -121,6 +121,8 @@ in
         set-option -g prefix C-Space
         bind-key C-Space send-prefix
 
+        bind-key -n 'M-n' next-window
+
         # Smart pane switching with awareness of Vim splits.
         # See: https://github.com/christoomey/vim-tmux-navigator
         is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
