@@ -171,6 +171,7 @@ in
         exercism # coding exercises
 
         firefox
+        rofi
 
         htop
         bottom
