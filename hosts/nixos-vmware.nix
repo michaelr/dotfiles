@@ -181,6 +181,8 @@ in
 
     };
 
+    xresources.extraConfig = builtins.readFile ../users/michaelr/Xresources;
+
 
     xdg.configFile."i3/config".text = builtins.readFile ../users/michaelr/i3;
     xdg.configFile."glow/glow.yml".text = ''
@@ -377,8 +379,6 @@ in
     };
 
   };
-
-  xresources.extraConfig = builtins.readFile ../users/michaelr/Xresources;
 
   # Install manpages and other documentation.
   documentation.enable = true;
