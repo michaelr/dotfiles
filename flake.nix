@@ -56,6 +56,26 @@
             { nixpkgs.overlays = overlays; }
           ];
         };
+        nixos-vmware = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            (import ./hosts/nixos-vmware.nix
+              {
+                fish-theme-bobthefish = inputs.fish-theme-bobthefish;
+                fish-nix-env = inputs.fish-nix-env;
+              })
+
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+              };
+              networking.hostName = "nixos-vmware";
+            }
+            { nixpkgs.overlays = overlays; }
+          ];
+        };
       };
     };
 }
