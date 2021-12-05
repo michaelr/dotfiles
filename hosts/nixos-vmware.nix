@@ -185,6 +185,7 @@ in
 
 
     xdg.configFile."i3/config".text = builtins.readFile ../users/michaelr/i3;
+    xdg.configFile."rofi/config.rasi".text = builtins.readFile ../users/michaelr/rofi;
     xdg.configFile."glow/glow.yml".text = ''
       style: "auto"
       local: false
