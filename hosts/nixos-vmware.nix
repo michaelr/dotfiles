@@ -60,8 +60,15 @@ in
 
     displayManager = {
       defaultSession = "none+i3";
-      lightdm.enable = true;
-      lightdm.background = "#282936";
+      lightdm = {
+        enable = true;
+        background = "#282936";
+      };
+      autoLogin = {
+        enable = true;
+        user = "michaelr";
+
+      };
 
       sessionCommands = ''
         ${pkgs.xlibs.xset}/bin/xset r rate 300 50
