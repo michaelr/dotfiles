@@ -76,11 +76,10 @@ in
   fonts = {
     fontDir.enable = true;
 
-    fonts = [
-      pkgs.fira-code
+    fonts = with pkgs; [
+      (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
     ];
   };
-
   services.openssh.enable = true;
   services.openssh.passwordAuthentication = true;
   services.openssh.permitRootLogin = "no";
