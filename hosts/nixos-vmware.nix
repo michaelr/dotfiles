@@ -53,7 +53,7 @@ in
   services.xserver = {
     enable = true;
     layout = "us";
-    #dpi = 220;
+    dpi = 220;
 
     desktopManager = {
       xterm.enable = false;
@@ -69,6 +69,8 @@ in
     windowManager = {
       i3.enable = true;
     };
+
+    xkbOptions = "ctrl:nocaps";
   };
 
   fonts = {
