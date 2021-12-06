@@ -61,6 +61,7 @@ in
     displayManager = {
       defaultSession = "none+i3";
       lightdm.enable = true;
+      lightdm.background = "#282936";
 
       sessionCommands = ''
         ${pkgs.xlibs.xset}/bin/xset r rate 300 50
