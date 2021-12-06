@@ -63,7 +63,7 @@ in
       lightdm.enable = true;
 
       sessionCommands = ''
-        ${pkgs.xlibs.xset}/bin/xset r rate 400 25
+        ${pkgs.xlibs.xset}/bin/xset r rate 300 50
       '';
     };
 
@@ -213,9 +213,9 @@ in
 
       general = {
         colors = true;
-        color_good = "#8C9440";
-        color_bad = "#A54242";
-        color_degraded = "#DE935F";
+        color_good = "#50FA7B";
+        color_degraded = "#F1FA8C";
+        color_bad = "#FF5555";
       };
 
       modules = {
