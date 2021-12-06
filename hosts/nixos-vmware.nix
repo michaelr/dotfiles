@@ -21,7 +21,6 @@ in
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
-  #boot.kernelParams = [ "ipv6.disable=1" ];
 
   fileSystems."/" =
     {
@@ -53,7 +52,6 @@ in
   services.xserver = {
     enable = true;
     layout = "us";
-    dpi = 220;
 
     desktopManager = {
       xterm.enable = false;
@@ -64,6 +62,9 @@ in
       defaultSession = "none+i3";
       lightdm.enable = true;
 
+      sessionCommands = ''
+        ${pkgs.xlibs.xset}/bin/xset r rate 400 25
+      '';
     };
 
     windowManager = {
@@ -173,6 +174,7 @@ in
 
         firefox
         rofi
+        wezterm
 
         htop
         bottom
@@ -195,6 +197,10 @@ in
       pager: true
       width: 80
     '';
+
+    programs.alacritty = {
+      enable = true;
+    };
 
     programs.kitty = {
       enable = true;
