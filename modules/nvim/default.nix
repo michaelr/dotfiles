@@ -128,6 +128,7 @@ in
       ${builtins.readFile ./sane_defaults.vim}
       ${builtins.readFile ./vim-test.vim}
       ${builtins.readFile ./vim-tmux-navigator.vim}
+      ${builtins.readFile ./folding.vim}
 
       colorscheme ${colorscheme.vim-name}
 
