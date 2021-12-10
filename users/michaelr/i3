@@ -61,11 +61,6 @@ floating_modifier $mod
 
 bindsym $mod+o exec rofi -show run
 
-# start a terminal
-bindsym $mod+n exec kitty
-bindsym $mod+d split h
-bindsym $mod+Shift+d split v
-
 # kill focused window
 bindsym $mod+w kill
 
