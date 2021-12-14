@@ -178,6 +178,7 @@ in
         tree-sitter
         glow # markdown previewer
         mdcat # kitty md previewer with images
+        termpdfpy # kitty pdf, epub terminal viewer
 
         exercism # coding exercises
 
