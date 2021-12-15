@@ -365,6 +365,7 @@ in
         gp = "git push";
         gpl = "git pull";
         gf = "git fetch";
+        gwc = "git-wt-clone";
       };
 
       interactiveShellInit = ''
