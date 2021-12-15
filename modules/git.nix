@@ -29,8 +29,8 @@
         co = "checkout";
         l = "log --pretty=oneline -n 50 --graph --abbrev-commit";
         st = "status -sb";
-        p = "git pull --ff-only";
-        prb = "git pull --rebase";
+        p = "pull --ff-only";
+        prb = "pull --rebase";
 
         # an alternative to git worktree
         # https://nicolaiarocci.com/git-worktree-vs-git-savepoints/
