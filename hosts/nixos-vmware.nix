@@ -192,6 +192,7 @@ in
         tmatrix # l33t factor 5000
       ];
 
+      file.".local/bin/git-wt-clone".source = ../users/michaelr/local-bin/git-wt-clone;
 
     };
 

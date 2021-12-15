@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -eou pipefail
+
+if [ $# -ne 2 ]; then
+    echo "Error: Not enough arguments";
+    echo "Usage: $(basename $0) <repo> <clone to dir>"
+    exit 1;
+fi
+
+repo=$1
+clone_to=$2
+
+git clone --no-checkout $repo $2
+cd $2
+git switch -c bare-dummy
+
+default_branch=$(basename $(git symbolic-ref refs/remotes/origin/HEAD))
+git worktree add $default_branch
