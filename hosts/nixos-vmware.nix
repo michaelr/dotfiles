@@ -189,6 +189,9 @@ in
         wezterm
 
         obsidian
+        _1password-gui
+        _1password
+
 
         htop
         bottom
