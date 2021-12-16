@@ -145,6 +145,8 @@ in
     '';
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   home-manager.users.${defaultUser} = {
     # TODO: get rid of this hack
     _module.args = {
@@ -185,6 +187,8 @@ in
         firefox
         rofi
         wezterm
+
+        obsidian
 
         htop
         bottom
