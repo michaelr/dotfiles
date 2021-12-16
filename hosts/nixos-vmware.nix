@@ -289,6 +289,11 @@ in
         bind-key "[" copy-mode
         bind-key "s" choose-session
         bind-key "r" source-file ~/.config/tmux/tmux.conf
+        # change pane split orientation
+        bind -n S-Up move-pane -h -t '.{up-of}'
+        bind -n S-Right move-pane -t '.{right-of}'
+        bind -n S-Left move-pane -t '.{left-of}'
+        bind -n S-down move-pane -h -t '.{down-of}'
 
         # splits (shift splits current pane, no shift is full width split)
         bind-key "|" split-window -h -c "#{pane_current_path}"
