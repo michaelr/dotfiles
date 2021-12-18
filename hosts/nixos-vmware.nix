@@ -126,6 +126,7 @@ in
 
   environment.systemPackages = with pkgs; [
     gnumake
+    lsof
     killall
     rxvt_unicode
     xclip
