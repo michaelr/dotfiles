@@ -186,6 +186,7 @@ in
         exercism # coding exercises
 
         firefox
+        google-chrome
         rofi
         wezterm
 
