@@ -192,6 +192,8 @@ in
         obsidian
         _1password-gui
         _1password
+        gopass
+        age
 
 
         htop
