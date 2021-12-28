@@ -187,6 +187,7 @@ in
         google-cloud-sdk
         mosh
         autossh
+        nodePackages.sql-formatter
 
         exercism # coding exercises
 
@@ -194,6 +195,8 @@ in
         google-chrome
         rofi
         wezterm
+
+        mariadb
 
         obsidian
         _1password-gui

@@ -120,6 +120,10 @@ in
       # elixir
       vim-elixir
 
+      # db
+      vim-dadbod
+      vim-dadbod-ui
+      vim-dadbod-completion
 
     ];
 
@@ -129,6 +133,7 @@ in
       ${builtins.readFile ./vim-test.vim}
       ${builtins.readFile ./vim-tmux-navigator.vim}
       ${builtins.readFile ./folding.vim}
+      ${builtins.readFile ./dadbod.vim}
 
       colorscheme ${colorscheme.vim-name}
 
