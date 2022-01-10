@@ -188,6 +188,7 @@ in
         mosh
         autossh
         nodePackages.sql-formatter
+        fx # json viewer
 
         exercism # coding exercises
 
