@@ -125,6 +125,9 @@ in
       vim-dadbod-ui
       vim-dadbod-completion
 
+      # fast motion
+      lightspeed-nvim
+
     ];
 
     # cmake = {"${pkgs.cmake-language-server}/bin/cmake-language-server"},
