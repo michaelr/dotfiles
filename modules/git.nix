@@ -14,7 +14,7 @@
     enable = true;
     userName = "Michael Reddick";
     userEmail = "michael.reddick@gmail.com";
-    ignores = [ ".envrc" ".direnv/" ];
+    ignores = [ ".nvimrc" ".envrc" ".direnv/" ];
 
     extraConfig = {
 
