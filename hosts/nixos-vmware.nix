@@ -189,6 +189,7 @@ in
         autossh
         nodePackages.sql-formatter
         fx # json viewer
+        kubectl
 
         exercism # coding exercises
 
