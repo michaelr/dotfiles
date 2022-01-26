@@ -185,11 +185,13 @@ in
         docker-compose_2
         docker-compose
         google-cloud-sdk
+        cloud-sql-proxy
         mosh
         autossh
         nodePackages.sql-formatter
         fx # json viewer
         kubectl
+        envsubst
 
         exercism # coding exercises
 
