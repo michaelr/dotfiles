@@ -192,6 +192,7 @@ in
         fx # json viewer
         kubectl
         envsubst
+        wget
 
         exercism # coding exercises
 
