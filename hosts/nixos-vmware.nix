@@ -193,6 +193,8 @@ in
         kubectl
         envsubst
         wget
+        socat
+        pup # command line html parser
 
         exercism # coding exercises
 
