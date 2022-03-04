@@ -93,6 +93,8 @@ in
   services.openssh.passwordAuthentication = true;
   services.openssh.permitRootLogin = "no";
 
+  services.tailscale.enable = true;
+
   networking.firewall.enable = false;
 
   virtualisation.vmware.guest.enable = true;
@@ -125,6 +127,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    tailscale
     gnumake
     lsof
     killall
