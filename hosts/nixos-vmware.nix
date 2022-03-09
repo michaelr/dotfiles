@@ -198,6 +198,8 @@ in
         wget
         socat
         pup # command line html parser
+        gitlab-runner
+        kubernetes-helm
 
         exercism # coding exercises
 
