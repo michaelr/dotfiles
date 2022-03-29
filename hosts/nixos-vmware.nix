@@ -201,6 +201,8 @@ in
         gitlab-runner
         kubernetes-helm
 
+        flyctl # fly.io
+
         exercism # coding exercises
 
         firefox
