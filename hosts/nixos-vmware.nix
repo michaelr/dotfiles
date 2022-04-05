@@ -308,6 +308,7 @@ in
 
         bind-key "c" new-window -c "#{pane_current_path}"
         bind-key "$" command-prompt -I "#S" "rename-session -- '%%'"
+        bind-key "z" resize-pane -Z
         bind-key "!" break-pane
         bind-key ":" command-prompt
         bind-key "?" list-keys
