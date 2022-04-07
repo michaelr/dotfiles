@@ -227,6 +227,8 @@ in
       ];
 
       file.".local/bin/git-wt-clone".source = ../users/michaelr/local-bin/git-wt-clone;
+      file.".local/bin/project-session.sh".source = ../users/michaelr/local-bin/project-session.sh;
+
 
     };
 
@@ -392,6 +394,9 @@ in
         hr = "history --merge";
 
         config = "nvim $HOME/.dotfiles";
+
+
+        p = "fd -H -td '^\.git$' -tf --search-path ~ -x echo {//} | fzf | xargs project-session.sh";
       };
 
       shellAbbrs = {
