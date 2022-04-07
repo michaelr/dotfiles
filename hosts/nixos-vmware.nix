@@ -181,6 +181,7 @@ in
         ripgrep
         fzf
         jq
+        fd
         tree-sitter
         glow # markdown previewer
         mdcat # kitty md previewer with images
