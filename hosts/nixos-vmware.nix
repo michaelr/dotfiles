@@ -71,7 +71,7 @@ in
       };
 
       sessionCommands = ''
-        ${pkgs.xlibs.xset}/bin/xset r rate 300 50
+        ${pkgs.xorg.xset}/bin/xset r rate 300 50
       '';
     };
 
@@ -112,7 +112,7 @@ in
   #     "defaults"
   #   ];
   # };
-
+  #
   time.timeZone = "America/Chicago";
 
   users.mutableUsers = false;
