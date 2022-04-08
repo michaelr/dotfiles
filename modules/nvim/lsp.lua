@@ -102,8 +102,7 @@ require'lspconfig'.tsserver.setup {
         on_attach(client, bufnr)
     end,
 }
-require("null-ls").config({})
-require'lspconfig'["null-ls"].setup({ capabilities = capabilities, on_attach = on_attach })
+--require'lspconfig'["null-ls"].setup({ capabilities = capabilities, on_attach = on_attach })
 
 -- vim
 require'lspconfig'.vimls.setup {cmd = lang_servers_cmd.vimls}
