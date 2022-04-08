@@ -203,6 +203,7 @@ in
         kubernetes-helm
 
         flyctl # fly.io
+        hcloud # hetzner cli
 
         exercism # coding exercises
 
