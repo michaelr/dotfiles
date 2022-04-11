@@ -24,58 +24,132 @@
       flake = false;
     };
 
+    flake-utils-plus.url = github:gytis-ivaskevicius/flake-utils-plus;
+    deploy-rs = {
+      url = github:serokell/deploy-rs;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = inputs@{ self, nixpkgs, flake-utils-plus, home-manager, fish-nix-env, fish-theme-bobthefish, ... }:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
       ];
+
+      nixosModules = flake-utils-plus.lib.exportModules (
+        nixpkgs.lib.mapAttrsToList (name: value: ./nixosModules/${name}) (builtins.readDir ./nixosModules)
+      );
     in
 
-    {
-      nixosConfigurations = {
-        nixos-wsl = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            (import ./hosts/nixos-wsl.nix
-              {
-                wsl-open = inputs.wsl-open;
-                fish-theme-bobthefish = inputs.fish-theme-bobthefish;
-                fish-nix-env = inputs.fish-nix-env;
-              })
+    flake-utils-plus.lib.mkFlake {
+      inherit self inputs nixosModules;
 
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-              };
-              networking.hostName = "nixos-wsl";
-            }
-            { nixpkgs.overlays = overlays; }
-          ];
-        };
-        nixos-vmware = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            (import ./hosts/nixos-vmware.nix
-              {
-                fish-theme-bobthefish = inputs.fish-theme-bobthefish;
-                fish-nix-env = inputs.fish-nix-env;
-              })
+      hostDefaults = {
+        system = "x86_64-linux";
+        modules = [
+          nixosModules.common
+          nixosModules.admin
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+            };
+          }
 
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-              };
-              networking.hostName = "nixos-vmware";
-            }
-            { nixpkgs.overlays = overlays; }
-          ];
-        };
+        ];
       };
+
+      sharedOverlays = overlays;
+
+      hosts.zner.modules = [ ./machines/zner nixosModules.docker ];
+      hosts.nixos-vmware.modules = [
+        (import ./machines/nixos-vmware {
+          fish-nix-env = fish-nix-env;
+          fish-theme-bobthefish = fish-theme-bobthefish;
+        })
+
+      ];
+      # nixos-vmware = nixpkgs.lib.nixosSystem {
+      #   system = "x86_64-linux";
+      #   modules = [
+      #     (import ./hosts/nixos-vmware.nix
+      #       {
+      #         fish-theme-bobthefish = inputs.fish-theme-bobthefish;
+      #         fish-nix-env = inputs.fish-nix-env;
+      #       })
+      #
+      #     inputs.home-manager.nixosModules.home-manager
+      #     {
+      #       home-manager = {
+      #         useGlobalPkgs = true;
+      #         useUserPackages = true;
+      #       };
+      #       networking.hostName = "nixos-vmware";
+      #     }
+      #     { nixpkgs.overlays = overlays; }
+      #   ];
+      # };
+
+
+      # nixosConfigurations = {
+      # nixos-wsl = nixpkgs.lib.nixosSystem {
+      #   system = "x86_64-linux";
+      #   modules = [
+      #     (import ./hosts/nixos-wsl.nix
+      #       {
+      #         wsl-open = inputs.wsl-open;
+      #         fish-theme-bobthefish = inputs.fish-theme-bobthefish;
+      #         fish-nix-env = inputs.fish-nix-env;
+      #       })
+      #
+      #     inputs.home-manager.nixosModules.home-manager
+      #     {
+      #       home-manager = {
+      #         useGlobalPkgs = true;
+      #         useUserPackages = true;
+      #       };
+      #       networking.hostName = "nixos-wsl";
+      #     }
+      #     { nixpkgs.overlays = overlays; }
+      #   ];
+      # };
+      # nixos-vmware = nixpkgs.lib.nixosSystem {
+      #   system = "x86_64-linux";
+      #   modules = [
+      #     (import ./hosts/nixos-vmware.nix
+      #       {
+      #         fish-theme-bobthefish = inputs.fish-theme-bobthefish;
+      #         fish-nix-env = inputs.fish-nix-env;
+      #       })
+      #
+      #     inputs.home-manager.nixosModules.home-manager
+      #     {
+      #       home-manager = {
+      #         useGlobalPkgs = true;
+      #         useUserPackages = true;
+      #       };
+      #       networking.hostName = "nixos-vmware";
+      #     }
+      #     { nixpkgs.overlays = overlays; }
+      #   ];
+      # };
+      # };
+
+      outputsBuilder = (channels: {
+        devShell = channels.nixpkgs.mkShell {
+          name = "my-deploy-shell";
+          buildInputs = with channels.nixpkgs; [
+            nixUnstable
+            inputs.deploy-rs.defaultPackage.${system}
+          ];
+        };
+      });
+
+      checks = builtins.mapAttrs
+        (system: deployLib: deployLib.deployChecks self.deploy)
+        inputs.deploy-rs.lib;
     };
 }
