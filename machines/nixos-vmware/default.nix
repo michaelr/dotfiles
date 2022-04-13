@@ -208,7 +208,6 @@ in
 
         exercism # coding exercises
 
-        firefox
         google-chrome
         rofi
         wezterm
@@ -246,6 +245,110 @@ in
       pager: true
       width: 80
     '';
+
+    programs.firefox = {
+      enable = true;
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        ublock-origin
+        multi-account-containers
+        old-reddit-redirect
+        onepassword-password-manager
+        vim-vixen
+        facebook-container
+      ];
+
+      # Settings for the default Firefox profile.
+      profiles.default.settings = {
+        # Disable the warning on accessing about:config.
+        "browser.aboutConfig.showWarning" = false;
+
+        # Don't autohide the address bar and tab bar in fullscreen.
+        "browser.fullscreen.autohide" = false;
+
+        # Use dark mode in interfaces and websites.
+        "browser.in-content.dark-mode" = true;
+
+        # Remove the highlights from the new tab page.
+        "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
+
+        # Remove the top stories from the new tab page.
+        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+
+        # Remove the top sites from the new tab page.
+        "browser.newtabpage.activity-stream.feeds.section.topsites" = false;
+
+        # Don't warn if Firefox doesn't seem to be the default browser.
+        "browser.shell.checkDefaultBrowser" = false;
+
+        # Allow switching tabs by scrolling.
+        "toolkit.tabbox.switchByScrolling" = true;
+
+        # Don't show the menu when pressing ALT.
+        "ui.key.menuAccessKeyFocuses" = false;
+
+        # Set the system UI to dark themed.
+        "ui.systemUsesDarkTheme" = 1;
+
+        # Don't reveal your internal IP when WebRTC is enabled
+        "media.peerconnection.ice.no_host" = false;
+
+        # Disable face detection
+        "camera.control.face_detection.enabled" = false;
+
+        # Disable GeoIP lookup on your address to set default search engine region
+        "browser.search.countryCode" = "US";
+        "browser.search.region" = "US";
+        "browser.search.geoip.url" = "";
+
+        # Do not submit invalid URIs entered in the address bar to the default search engine
+        "keyword.enabled" = true;
+
+        # Don't trim HTTP off of URLs in the address bar
+        "browser.urlbar.trimURLs" = false;
+
+        # Disable Extension recommendations
+        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr" = false;
+
+        # Enable contextual identity Containers feature
+        "privacy.userContext.enabled" = true;
+
+        # Enable blocking reported web forgeries
+        "browser.safebrowsing.phishing.enabled" = true;
+
+        # Enable blocking reported attack sites
+        "browser.safebrowsing.malware.enabled" = true;
+
+        # Disable querying Google Application Reputation database for downloaded binary files
+        "browser.safebrowsing.downloads.remote.enabled" = false;
+
+        # Disable pocket
+        "browser.pocket.enabled" = false;
+        "extensions.pocket.enabled" = false;
+
+        # Disable search suggestions
+        "browser.search.suggest.enabled" = false;
+
+        # Disable "Show search suggestions in location bar results"
+        "browser.urlbar.suggest.searches" = false;
+
+        # Never check updates for search engines
+        "browser.search.update" = false;
+
+        # Enable insecure password warnings (login forms in non-HTTPS pages)
+        "security.insecure_password.ui.enabled" = true;
+
+        # Disable the "new tab page" feature and show a blank tab instead
+        "browser.newtabpage.enabled" = false;
+        "browser.newtab.url" = "about:blank";
+
+        "browser.startup.homepage" = "about:blank";
+
+        # Disable password manager
+        "signon.rememberSignons" = false;
+
+        "browser.newtabpage.activity-stream.default.sites" = "";
+      };
+    };
 
     programs.alacritty = {
       enable = true;

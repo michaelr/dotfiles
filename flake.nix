@@ -7,6 +7,8 @@
     # make home-manager use same nixpkgs we're using
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nur.url = "github:nix-community/NUR";
+
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     fish-nix-env = {
@@ -36,6 +38,7 @@
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
+        inputs.nur.overlay
       ];
 
       nixosModules = flake-utils-plus.lib.exportModules (
