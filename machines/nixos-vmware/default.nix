@@ -502,6 +502,8 @@ in
 
 
         p = "fd -H -td '^\.git$' -tf --search-path ~/code -x echo {//} | fzf | xargs project-session.sh";
+
+        fly = "flyctl";
       };
 
       shellAbbrs = {
