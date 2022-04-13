@@ -501,7 +501,7 @@ in
         config = "nvim $HOME/.dotfiles";
 
 
-        p = "fd -H -td '^\.git$' -tf --search-path ~ -x echo {//} | fzf | xargs project-session.sh";
+        p = "fd -H -td '^\.git$' -tf --search-path ~/code -x echo {//} | fzf | xargs project-session.sh";
       };
 
       shellAbbrs = {
