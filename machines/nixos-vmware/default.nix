@@ -91,7 +91,7 @@ in
     ];
   };
   services.openssh.enable = true;
-  services.openssh.passwordAuthentication = true;
+  services.openssh.passwordAuthentication = false;
   services.openssh.permitRootLogin = "no";
 
   services.tailscale.enable = true;
