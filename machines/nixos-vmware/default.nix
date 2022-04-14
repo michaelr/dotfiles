@@ -117,7 +117,7 @@ in
   time.timeZone = "America/Chicago";
 
   users.mutableUsers = false;
-
+  users.groups.plocate = { };
   users.users.${defaultUser} = {
     uid = 1000;
     isNormalUser = true;
@@ -225,6 +225,20 @@ in
         bottom
 
         tmatrix # l33t factor 5000
+
+        duf
+        du-dust
+        pgcli
+        sd
+        mtr
+        plocate
+        magic-wormhole
+        xh
+        lazydocker
+        lazygit
+        ctop
+        angle-grinder
+        lnav
       ];
 
       file.".local/bin/git-wt-clone".source = ../../users/michaelr/local-bin/git-wt-clone;
