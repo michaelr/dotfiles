@@ -239,6 +239,8 @@ in
         ctop
         angle-grinder
         lnav
+
+        open-vm-tools
       ];
 
       file.".local/bin/git-wt-clone".source = ../../users/michaelr/local-bin/git-wt-clone;
