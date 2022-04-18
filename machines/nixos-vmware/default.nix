@@ -220,6 +220,8 @@ in
         gopass
         age
 
+        libnotify
+        dunst
 
         htop
         bottom
