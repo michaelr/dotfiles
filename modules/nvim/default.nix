@@ -23,6 +23,8 @@ in
     yarn
     nodePackages.eslint_d
     nodePackages.prettier
+    nodePackages.typescript-language-server
+    nodePackages.typescript
     # lua
     lua
     # markdown
@@ -152,13 +154,15 @@ in
           html = {"${pkgs.nodePackages.vscode-html-languageserver-bin}/bin/html-languageserver", "--stdio"},
           jsonls = {"${pkgs.nodePackages.vscode-json-languageserver-bin}/bin/json-languageserver", "--stdio"},
           rnix = {"${pkgs.rnix-lsp}/bin/rnix-lsp"},
-          tsserver = {"${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server", "--stdio"},
+          tsserver = {"${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server", "--stdio", "--tsserver-path", "tsserver"},
           vimls = {"${pkgs.nodePackages.vim-language-server}/bin/vim-language-server", "--stdio"},
           yamlls = {"${pkgs.nodePackages.yaml-language-server}/bin/yaml-language-server", "--stdio"},
           dls = "${pkgs.nodePackages.diagnostic-languageserver}/bin/diagnostic-languageserver",
           isort = "${pkgs.python3Packages.isort}/bin/isort",
           lua_format = "${pkgs.luaformatter}/bin/lua-format", 
-          elixirls = {"${pkgs.elixir_ls}/bin/elixir-ls"}
+          elixirls = {"${pkgs.elixir_ls}/bin/elixir-ls"},
+          eslint_d_bin = "${pkgs.nodePackages.eslint_d}/bin/eslint_d",
+
 
         }
 

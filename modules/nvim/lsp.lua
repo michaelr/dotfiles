@@ -78,30 +78,37 @@ local on_attach = function(client, bufnr)
         vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
     end
 end
+
 require'lspconfig'.tsserver.setup {
     capabilities = capabilities,
     cmd = lang_servers_cmd.tsserver,
-    on_attach = function(client, bufnr)
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-        local ts_utils = require("nvim-lsp-ts-utils")
-        ts_utils.setup({
-            eslint_bin = "eslint_d",
-            eslint_enable_diagnostics = true,
-            eslint_enable_code_actions = true,
-            enable_formatting = true,
-            formatter = "prettier",
-            -- disable 'Could not find a declaration file for module..'
-            filter_out_diagnostics_by_code = { 7016 },
-        })
-        ts_utils.setup_client(client)
-        -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
-        -- buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
-        -- buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
-
-        on_attach(client, bufnr)
-    end,
+    on_attach = on_attach
 }
+
+-- require'lspconfig'.tsserver.setup {
+--     capabilities = capabilities,
+--     cmd = lang_servers_cmd.tsserver,
+--     on_attach = function(client, bufnr)
+--         client.resolved_capabilities.document_formatting = false
+--         client.resolved_capabilities.document_range_formatting = false
+--         local ts_utils = require("nvim-lsp-ts-utils")
+--         ts_utils.setup({
+--             eslint_bin = lang_servers_cmd.eslint_d_bin,
+--             eslint_enable_diagnostics = true,
+--             eslint_enable_code_actions = true,
+--             enable_formatting = true,
+--             formatter = "prettier",
+--             -- disable 'Could not find a declaration file for module..'
+--             filter_out_diagnostics_by_code = { 7016 },
+--         })
+--         ts_utils.setup_client(client)
+--         -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+--         -- buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
+--         -- buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
+--
+--         on_attach(client, bufnr)
+--     end,
+-- }
 --require'lspconfig'["null-ls"].setup({ capabilities = capabilities, on_attach = on_attach })
 
 -- vim
