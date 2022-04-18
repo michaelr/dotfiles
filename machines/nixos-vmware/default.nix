@@ -375,9 +375,53 @@ in
       extraConfig = builtins.readFile ../../users/michaelr/kitty;
     };
 
+    programs.i3status-rust = {
+      enable = true;
+
+      bars = {
+        bottom = {
+          blocks = [
+            {
+              block = "disk_space";
+              path = "/";
+              alias = "/";
+              info_type = "available";
+              unit = "GB";
+              alert_absolute = true;
+              interval = 60;
+              warning = 15.0;
+              alert = 8.0;
+            }
+            {
+              block = "memory";
+              display_type = "memory";
+              format_mem = "{mem_used_percents}";
+              format_swap = "{swap_used_percents}";
+            }
+            {
+              block = "cpu";
+              interval = 1;
+            }
+            {
+              block = "time";
+              interval = 60;
+              format = "%a %m/%d %l:%M %p";
+            }
+          ];
+          settings = {
+            theme = {
+              name = "dracula";
+            };
+          };
+          icons = "material-nf";
+          theme = "dracula";
+        };
+      };
+    };
+
 
     programs.i3status = {
-      enable = true;
+      enable = false;
 
       general = {
         colors = true;
