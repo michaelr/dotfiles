@@ -450,7 +450,7 @@ in
         {
           plugin = dracula;
           extraConfig = ''
-            set -g @dracula-plugins "cpu-usage time"
+            set -g @dracula-plugins "battery"
             set -g @dracula-show-powerline true
             set -g @dracula-refresh-rate 10
             set -g @dracula-show-left-icon session
