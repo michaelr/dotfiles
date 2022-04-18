@@ -4,7 +4,6 @@ vim.g.nvim_tree_show_icons = {
     files = 1,
     folder_arrows = 0
 }
-vim.g.nvim_tree_indent_markers = 1
 
 require'nvim-tree'.setup {
     -- update the focused file on `BufEnter`, un-collapses the folders
@@ -16,5 +15,10 @@ require'nvim-tree'.setup {
         open_file = {
             quit_on_open = true,
         }
-   }
+   },
+   renderer = {
+        indent_markers = {
+            enable = true
+        }
+    }
 }
