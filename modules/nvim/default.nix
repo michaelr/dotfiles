@@ -162,7 +162,7 @@ in
           lua_format = "${pkgs.luaformatter}/bin/lua-format", 
           elixirls = {"${pkgs.elixir_ls}/bin/elixir-ls"},
           eslint_d_bin = "${pkgs.nodePackages.eslint_d}/bin/eslint_d",
-
+          tailwindcss = {"${pkgs.nodePackages."@tailwindcss/language-server"}/bin/tailwindcss-language-server", "--stdio" },
 
         }
 

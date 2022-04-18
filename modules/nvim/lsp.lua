@@ -6,46 +6,6 @@
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol
                                                                      .make_client_capabilities())
 
-require'lspconfig'.elixirls.setup{
-    capabilities = capabilities,
-    cmd = lang_servers_cmd.elixirls
-}
--- bash
-require'lspconfig'.bashls.setup {  cmd = lang_servers_cmd.bashls}
-
--- cmake
--- require'lspconfig'.cmake.setup {cmd = lang_servers_cmd.cmake}
-
--- css
-require'lspconfig'.cssls.setup {
-    capabilities = capabilities,
-    cmd = lang_servers_cmd.cssls
-}
-
--- docker
-require'lspconfig'.dockerls.setup {cmd = lang_servers_cmd.dockerls}
-
--- go
-require'lspconfig'.gopls.setup {cmd = lang_servers_cmd.gopls}
-
-
--- html
-require'lspconfig'.html.setup {capabilities = capabilities, cmd = lang_servers_cmd.html}
-
--- json
-require'lspconfig'.jsonls.setup {cmd = lang_servers_cmd.jsonls}
-
--- lua
-require'lspconfig'.sumneko_lua.setup {
-    cmd = {"lua-language-server"},
-    settings = {Lua = {diagnostics = {globals = {'vim', 'lang_servers_cmd'}}}}
-}
-
--- nix
-require'lspconfig'.rnix.setup {cmd = lang_servers_cmd.rnix}
-
--- TypeScript/JavaScript
--- from: https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
 -- TODO: should I use this on_attach function for all lang servers?
 local buf_map = function(bufnr, mode, lhs, rhs, opts)
     vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
@@ -79,11 +39,86 @@ local on_attach = function(client, bufnr)
     end
 end
 
+
+require'lspconfig'.elixirls.setup{
+    capabilities = capabilities,
+    cmd = lang_servers_cmd.elixirls,
+    on_attach = on_attach
+}
+-- bash
+require'lspconfig'.bashls.setup {
+    cmd = lang_servers_cmd.bashls,
+    capabilities = capabilities,
+    on_attach = on_attach
+}
+
+
+-- css
+require'lspconfig'.cssls.setup {
+    capabilities = capabilities,
+    cmd = lang_servers_cmd.cssls,
+    on_attach = on_attach
+}
+
+-- docker
+require'lspconfig'.dockerls.setup {
+    cmd = lang_servers_cmd.dockerls,
+    capabilities = capabilities,
+    on_attach = on_attach
+}
+
+-- go
+require'lspconfig'.gopls.setup {
+    cmd = lang_servers_cmd.gopls,
+    capabilities = capabilities,
+    on_attach = on_attach
+}
+
+
+-- html
+require'lspconfig'.html.setup {
+    capabilities = capabilities,
+    cmd = lang_servers_cmd.html,
+    on_attach = on_attach
+}
+
+-- json
+require'lspconfig'.jsonls.setup {
+    capabilities = capabilities,
+    cmd = lang_servers_cmd.jsonls,
+    on_attach = on_attach
+}
+
+-- lua
+require'lspconfig'.sumneko_lua.setup {
+    cmd = {"lua-language-server"},
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = {Lua = {diagnostics = {globals = {'vim', 'lang_servers_cmd'}}}}
+}
+
+-- nix
+require'lspconfig'.rnix.setup {
+    capabilities = capabilities,
+    cmd = lang_servers_cmd.rnix,
+    on_attach = on_attach
+}
+
+-- TypeScript/JavaScript
+-- from: https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
 require'lspconfig'.tsserver.setup {
     capabilities = capabilities,
     cmd = lang_servers_cmd.tsserver,
     on_attach = on_attach
 }
+
+require'lspconfig'.tailwindcss.setup {
+
+    capabilities = capabilities,
+    cmd = lang_servers_cmd.tailwindcss,
+    on_attach = on_attach
+}
+
 
 -- require'lspconfig'.tsserver.setup {
 --     capabilities = capabilities,
