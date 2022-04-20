@@ -25,6 +25,8 @@
       pull.ff = "only";
       push.default = "current";
 
+      merge.conflictStyle = "zdiff3";
+
       alias = {
         co = "checkout";
         l = "log --pretty=oneline -n 50 --graph --abbrev-commit";
