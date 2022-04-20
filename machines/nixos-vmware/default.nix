@@ -384,6 +384,14 @@ in
         bottom = {
           blocks = [
             {
+              block = "focused_window";
+              show_marks = "visible";
+            }
+            {
+              block = "docker";
+              format = "{running}/{total}";
+            }
+            {
               block = "disk_space";
               path = "/";
               alias = "/";
@@ -403,6 +411,12 @@ in
             {
               block = "cpu";
               interval = 1;
+            }
+            {
+              block = "uptime";
+            }
+            {
+              block = "notify";
             }
             {
               block = "time";
