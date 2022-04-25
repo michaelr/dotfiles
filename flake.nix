@@ -26,6 +26,12 @@
       flake = false;
     };
 
+    work-utils = {
+      url = git+ssh://git@github.com/michaelr/work-utils.git;
+      inputs.nixpkgs.follows = "nixpkgs";
+      #flake = false;
+    };
+
     flake-utils-plus.url = github:gytis-ivaskevicius/flake-utils-plus;
     deploy-rs = {
       url = github:serokell/deploy-rs;
@@ -34,10 +40,11 @@
 
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils-plus, home-manager, fish-nix-env, fish-theme-bobthefish, ... }:
+  outputs = inputs@{ self, nixpkgs, flake-utils-plus, home-manager, fish-nix-env, fish-theme-bobthefish, work-utils, ... }:
     let
       overlays = [
         inputs.neovim-nightly-overlay.overlay
+        inputs.work-utils.overlay
         inputs.nur.overlay
       ];
 
@@ -72,6 +79,7 @@
         (import ./machines/nixos-vmware {
           fish-nix-env = fish-nix-env;
           fish-theme-bobthefish = fish-theme-bobthefish;
+          work-utils = work-utils;
         })
 
       ];

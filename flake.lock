@@ -255,6 +255,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",
+        "work-utils": "work-utils",
         "wsl-open": "wsl-open"
       }
     },
@@ -271,6 +272,26 @@
         "owner": "numtide",
         "repo": "flake-utils",
         "type": "github"
+      }
+    },
+    "work-utils": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1650922823,
+        "narHash": "sha256-BiRAGZSpUA25Dmo2RKAGCiWqbOCr7N/TKVUeMfY1fBU=",
+        "ref": "master",
+        "rev": "7cb5230fee18ababfd317951554309296e1c8a8f",
+        "revCount": 3,
+        "type": "git",
+        "url": "ssh://git@github.com/michaelr/work-utils.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/michaelr/work-utils.git"
       }
     },
     "wsl-open": {

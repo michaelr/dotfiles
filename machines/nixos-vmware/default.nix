@@ -1,4 +1,4 @@
-{ fish-nix-env, fish-theme-bobthefish }:
+{ fish-nix-env, fish-theme-bobthefish, work-utils }:
 { lib, pkgs, config, modulesPath, ... }:
 
 with lib;
