@@ -205,6 +205,7 @@ in
 
         flyctl # fly.io
         hcloud # hetzner cli
+        glab # gitlab cli
 
         exercism # coding exercises
 
