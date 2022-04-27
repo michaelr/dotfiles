@@ -34,8 +34,10 @@ in
     };
 
   swapDevices = [ ];
-  ##
 
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+  nixpkgs.config.pulseaudio = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -53,6 +55,8 @@ in
   services.xserver = {
     enable = true;
     layout = "us";
+
+    videoDrivers = [ "vmware" ];
 
     desktopManager = {
       xterm.enable = false;
@@ -124,7 +128,7 @@ in
     # NOTE: on nixos-wsl you have to use the nix-env fish plugin if $SHELL=fish
     shell = pkgs.fish;
     password = "michaelr";
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" "docker" "audio" "sound" "video" "jackaudio" ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -179,6 +183,9 @@ in
       };
 
       packages = with pkgs; [
+        mpv
+        pavucontrol
+
         ripgrep
         fzf
         jq
@@ -228,6 +235,9 @@ in
         bottom
 
         tmatrix # l33t factor 5000
+        yt-dlp # multimedia archiver
+        ffmpeg
+        vlc
 
         duf
         du-dust
