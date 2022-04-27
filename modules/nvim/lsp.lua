@@ -4,7 +4,7 @@
 --
 --
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol
-                                                                     .make_client_capabilities())
+.make_client_capabilities())
 
 -- TODO: should I use this on_attach function for all lang servers?
 local buf_map = function(bufnr, mode, lhs, rhs, opts)
@@ -40,13 +40,13 @@ local on_attach = function(client, bufnr)
 end
 
 
-require'lspconfig'.elixirls.setup{
+require 'lspconfig'.elixirls.setup {
     capabilities = capabilities,
     cmd = lang_servers_cmd.elixirls,
     on_attach = on_attach
 }
 -- bash
-require'lspconfig'.bashls.setup {
+require 'lspconfig'.bashls.setup {
     cmd = lang_servers_cmd.bashls,
     capabilities = capabilities,
     on_attach = on_attach
@@ -54,21 +54,21 @@ require'lspconfig'.bashls.setup {
 
 
 -- css
-require'lspconfig'.cssls.setup {
+require 'lspconfig'.cssls.setup {
     capabilities = capabilities,
     cmd = lang_servers_cmd.cssls,
     on_attach = on_attach
 }
 
 -- docker
-require'lspconfig'.dockerls.setup {
+require 'lspconfig'.dockerls.setup {
     cmd = lang_servers_cmd.dockerls,
     capabilities = capabilities,
     on_attach = on_attach
 }
 
 -- go
-require'lspconfig'.gopls.setup {
+require 'lspconfig'.gopls.setup {
     cmd = lang_servers_cmd.gopls,
     capabilities = capabilities,
     on_attach = on_attach
@@ -76,29 +76,29 @@ require'lspconfig'.gopls.setup {
 
 
 -- html
-require'lspconfig'.html.setup {
+require 'lspconfig'.html.setup {
     capabilities = capabilities,
     cmd = lang_servers_cmd.html,
     on_attach = on_attach
 }
 
 -- json
-require'lspconfig'.jsonls.setup {
+require 'lspconfig'.jsonls.setup {
     capabilities = capabilities,
     cmd = lang_servers_cmd.jsonls,
     on_attach = on_attach
 }
 
 -- lua
-require'lspconfig'.sumneko_lua.setup {
-    cmd = {"lua-language-server"},
+require 'lspconfig'.sumneko_lua.setup {
+    cmd = { "lua-language-server" },
     capabilities = capabilities,
     on_attach = on_attach,
-    settings = {Lua = {diagnostics = {globals = {'vim', 'lang_servers_cmd'}}}}
+    settings = { Lua = { diagnostics = { globals = { 'vim', 'lang_servers_cmd' } } } }
 }
 
 -- nix
-require'lspconfig'.rnix.setup {
+require 'lspconfig'.rnix.setup {
     capabilities = capabilities,
     cmd = lang_servers_cmd.rnix,
     on_attach = on_attach
@@ -106,13 +106,13 @@ require'lspconfig'.rnix.setup {
 
 -- TypeScript/JavaScript
 -- from: https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
-require'lspconfig'.tsserver.setup {
-    capabilities = capabilities,
-    cmd = lang_servers_cmd.tsserver,
-    on_attach = on_attach
-}
+-- require'lspconfig'.tsserver.setup {
+--     capabilities = capabilities,
+--     cmd = lang_servers_cmd.tsserver,
+--     on_attach = on_attach
+-- }
 
-require'lspconfig'.tailwindcss.setup {
+require 'lspconfig'.tailwindcss.setup {
 
     capabilities = capabilities,
     cmd = lang_servers_cmd.tailwindcss,
@@ -120,37 +120,37 @@ require'lspconfig'.tailwindcss.setup {
 }
 
 
--- require'lspconfig'.tsserver.setup {
---     capabilities = capabilities,
---     cmd = lang_servers_cmd.tsserver,
---     on_attach = function(client, bufnr)
---         client.resolved_capabilities.document_formatting = false
---         client.resolved_capabilities.document_range_formatting = false
---         local ts_utils = require("nvim-lsp-ts-utils")
---         ts_utils.setup({
---             eslint_bin = lang_servers_cmd.eslint_d_bin,
---             eslint_enable_diagnostics = true,
---             eslint_enable_code_actions = true,
---             enable_formatting = true,
---             formatter = "prettier",
---             -- disable 'Could not find a declaration file for module..'
---             filter_out_diagnostics_by_code = { 7016 },
---         })
---         ts_utils.setup_client(client)
---         -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
---         -- buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
---         -- buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
---
---         on_attach(client, bufnr)
---     end,
--- }
+require 'lspconfig'.tsserver.setup {
+    capabilities = capabilities,
+    cmd = lang_servers_cmd.tsserver,
+    on_attach = function(client, bufnr)
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+        local ts_utils = require("nvim-lsp-ts-utils")
+        ts_utils.setup({
+            eslint_bin = lang_servers_cmd.eslint_d_bin,
+            eslint_enable_diagnostics = true,
+            eslint_enable_code_actions = true,
+            enable_formatting = true,
+            formatter = "prettier",
+            -- disable 'Could not find a declaration file for module..'
+            filter_out_diagnostics_by_code = { 7016 },
+        })
+        ts_utils.setup_client(client)
+        -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+        -- buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
+        -- buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
+
+        on_attach(client, bufnr)
+    end,
+}
 --require'lspconfig'["null-ls"].setup({ capabilities = capabilities, on_attach = on_attach })
 
 -- vim
-require'lspconfig'.vimls.setup {cmd = lang_servers_cmd.vimls}
+require 'lspconfig'.vimls.setup { cmd = lang_servers_cmd.vimls }
 
 -- signature help
-require'lsp_signature'.on_attach({bind = true, handler_opts = {border = 'single'}})
+require 'lsp_signature'.on_attach({ bind = true, handler_opts = { border = 'single' } })
 
 -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
 
@@ -158,9 +158,9 @@ require'lsp_signature'.on_attach({bind = true, handler_opts = {border = 'single'
 
 -- Jump to Definition/Refrences/Implementation
 vim.api.nvim_set_keymap('n', 'gd', [[<cmd>lua vim.lsp.buf.definition()<CR>]],
-                        {noremap = true, silent = true})
+    { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'gi', [[<cmd>lua vim.lsp.buf.implementation()<CR>]],
-                        {noremap = true, silent = true})
+    { noremap = true, silent = true })
 
 -- Completion
 
@@ -190,20 +190,20 @@ cmp.setup({
                 luasnip = "[snip]",
                 treesitter = "[tsit]"
             }
-    })},
+        }) },
     mapping = {
-        ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
-        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
-        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
+        ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         -- If you want to remove the default `<C-y>` mapping, You can specify
         -- `cmp.config.disable` value.
         ['<C-y>'] = cmp.config.disable,
-        ['<C-e>'] = cmp.mapping({i = cmp.mapping.abort(), c = cmp.mapping.close()}),
+        ['<C-e>'] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
         ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
             select = false
         }),
-        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})
+        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })
     },
     --sources = cmp.config.sources({
     sources = {
@@ -219,7 +219,7 @@ cmp.setup({
 
 -- AUTO FORMATTING
 
-vim.api.nvim_command[[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+vim.api.nvim_command [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 
 -- lsp shit that can't be done in lua atm.
 -- Note: This is even worse then writing vimscript (Can't believe that would be possible but here you go)
@@ -250,4 +250,3 @@ for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { texthl = hl, numhl = hl, text = icon })
 end
-
