@@ -55,6 +55,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # No background
 exec --no-startup-id xsetroot -solid "#282A36"
 
+
+# volume icon in systray
+exec --no-startup-id volumeicon
+
 #----------------------------------------------------------------------
 # Keybindings
 #----------------------------------------------------------------------

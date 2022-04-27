@@ -238,6 +238,7 @@ in
         yt-dlp # multimedia archiver
         ffmpeg
         vlc
+        volumeicon
 
         duf
         du-dust
@@ -254,6 +255,7 @@ in
         lnav
 
         open-vm-tools
+
       ];
 
       file.".local/bin/git-wt-clone".source = ../../users/michaelr/local-bin/git-wt-clone;
