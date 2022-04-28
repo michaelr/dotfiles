@@ -256,6 +256,8 @@ in
 
         open-vm-tools
 
+        i3wsr # i3 workspace renamer
+
       ];
 
       file.".local/bin/git-wt-clone".source = ../../users/michaelr/local-bin/git-wt-clone;
