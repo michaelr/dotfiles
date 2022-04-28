@@ -258,6 +258,9 @@ in
 
         i3wsr # i3 workspace renamer
 
+        ncspot
+        spotdl
+        downonspot
       ];
 
       file.".local/bin/git-wt-clone".source = ../../users/michaelr/local-bin/git-wt-clone;
