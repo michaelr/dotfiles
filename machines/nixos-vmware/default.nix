@@ -209,6 +209,7 @@ in
         pup # command line html parser
         gitlab-runner
         kubernetes-helm
+        unzip
 
         flyctl # fly.io
         hcloud # hetzner cli
