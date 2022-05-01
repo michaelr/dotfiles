@@ -1,17 +1,17 @@
 -- Set barbar's options
 vim.g.bufferline = {
-  animation = false,
-  auto_hide = true,
-  tabpages = false,
-  clickable = true,
-  closable = false,
-  icons = true,
-  icon_custom_colors = true,
+    animation = false,
+    auto_hide = true,
+    tabpages = false,
+    clickable = true,
+    closable = false,
+    icons = true,
+    icon_custom_colors = true,
 
-  -- Sets the maximum buffer name length.
-  maximum_length = 30,
+    -- Sets the maximum buffer name length.
+    maximum_length = 30,
 
-  no_name_title = 'New file',
+    no_name_title = 'New file',
 }
 
 local map = vim.api.nvim_set_keymap
