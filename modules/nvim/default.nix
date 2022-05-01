@@ -47,7 +47,7 @@ in
     lldb # debugging setup
     rust-analyzer
     clippy
-  ] ++ (lib.optional pkgs.stdenv.isLinux sumneko-lua-language-server);
+  ] ++ (lib.optional pkgs.stdenv.isLinux pkgs.sumneko-3-2.sumneko-lua-language-server);
 
   programs.neovim = {
     enable = true;

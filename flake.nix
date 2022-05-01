@@ -4,6 +4,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
 
+    nixpkgs-sumneko-3-2.url = "github:NixOS/nixpkgs?rev=36563d95276f3bf4b144e6e3b355e666ca9f97f4";
+
     # make home-manager use same nixpkgs we're using
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -34,11 +36,15 @@
 
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils-plus, home-manager, fish-nix-env, fish-theme-bobthefish, ... }:
+  outputs = inputs@{ self, nixpkgs, flake-utils-plus, home-manager, fish-nix-env, fish-theme-bobthefish, nixpkgs-sumneko-3-2, ... }:
     let
+      sumneko-overlay = final: prev: {
+        sumneko-3-2 = nixpkgs-sumneko-3-2.legacyPackages.${prev.system};
+      };
       overlays = [
         inputs.neovim-nightly-overlay.overlay
         inputs.nur.overlay
+        sumneko-overlay
       ];
 
       nixosModules = flake-utils-plus.lib.exportModules (
