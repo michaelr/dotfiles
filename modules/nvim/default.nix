@@ -70,6 +70,8 @@ in
       which-key-nvim
       vim-nix # vimscript
 
+      neoformat
+
       ## lsp
       nvim-lspconfig
       lspkind-nvim

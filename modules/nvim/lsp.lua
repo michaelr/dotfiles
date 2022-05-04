@@ -35,7 +35,7 @@ local on_attach = function(client, bufnr)
     buf_map(bufnr, "n", "<Leader>a", ":LspDiagLine<CR>")
     buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
     if client.resolved_capabilities.document_formatting then
-        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+        vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
     end
 end
 
@@ -126,18 +126,23 @@ require 'lspconfig'.tsserver.setup {
     on_attach = function(client, bufnr)
         client.resolved_capabilities.document_formatting = false
         client.resolved_capabilities.document_range_formatting = false
-        local ts_utils = require("nvim-lsp-ts-utils")
-        ts_utils.setup({
-            eslint_bin = lang_servers_cmd.eslint_d_bin,
-            eslint_enable_diagnostics = true,
-            eslint_enable_code_actions = true,
-            enable_formatting = true,
-            formatter = "prettier",
-            -- disable 'Could not find a declaration file for module..'
-            filter_out_diagnostics_by_code = { 7016 },
-        })
-        ts_utils.setup_client(client)
-        -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+
+        vim.cmd("autocmd BufWritePre <buffer> :Neoformat")
+
+        -- local ts_utils = require("nvim-lsp-ts-utils")
+        -- ts_utils.setup({
+        --     eslint_bin = lang_servers_cmd.eslint_d_bin,
+        --     eslint_enable_diagnostics = true,
+        --     eslint_enable_code_actions = true,
+        --     enable_formatting = true,
+        --     formatter = "prettier",
+        --     -- disable 'Could not find a declaration file for module..'
+        --     filter_out_diagnostics_by_code = { 7016 },
+        -- })
+        -- ts_utils.setup_client(client)
+        --
+        --
+        -- -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
         -- buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
         -- buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
 
@@ -219,7 +224,7 @@ cmp.setup({
 
 -- AUTO FORMATTING
 
-vim.api.nvim_command [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+-- vim.api.nvim_command [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 
 -- lsp shit that can't be done in lua atm.
 -- Note: This is even worse then writing vimscript (Can't believe that would be possible but here you go)
