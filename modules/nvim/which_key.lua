@@ -66,7 +66,7 @@ local mappings = {
         a = { "<cmd>Telescope lsp_code_actions<cr>", "Code Action" },
         d = { "<cmd>Telescope lsp_document_diagnostics<cr>", "Document Diagnostics" },
         D = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics" },
-        f = { "<cmd>lua vim.lsp.buf.formatting_sync(nil, 1000)<cr>", "Format document" },
+        f = { "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "Format document" },
         F = { "<cmd>LspRestart<cr>", "Restart LSP" },
         i = { "<cmd>Telescope lsp_implementations<cr>", "Implementations" },
         I = { "<cmd>LspInfo<cr>", "Info" },

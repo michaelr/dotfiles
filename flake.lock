@@ -261,6 +261,22 @@
         "type": "github"
       }
     },
+    "nvim-plugin-typescript": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1651158175,
+        "narHash": "sha256-HlCeV/Qnq+vIZPPML8TXx4nlTCDaj+1yqb6KB+oGFUs=",
+        "owner": "jose-elias-alvarez",
+        "repo": "typescript.nvim",
+        "rev": "1add655c7ecf1f61df9a40b43973b0394d9ae9c4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jose-elias-alvarez",
+        "repo": "typescript.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "deploy-rs": "deploy-rs",
@@ -272,6 +288,7 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-sumneko-3-2": "nixpkgs-sumneko-3-2",
         "nur": "nur",
+        "nvim-plugin-typescript": "nvim-plugin-typescript",
         "wsl-open": "wsl-open"
       }
     },

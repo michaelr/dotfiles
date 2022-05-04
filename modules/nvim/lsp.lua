@@ -12,9 +12,9 @@ local buf_map = function(bufnr, mode, lhs, rhs, opts)
         silent = true,
     })
 end
+
 local on_attach = function(client, bufnr)
     vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
-    vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
     vim.cmd("command! LspCodeAction lua vim.lsp.buf.code_action()")
     vim.cmd("command! LspHover lua vim.lsp.buf.hover()")
     vim.cmd("command! LspRename lua vim.lsp.buf.rename()")
@@ -23,7 +23,7 @@ local on_attach = function(client, bufnr)
     vim.cmd("command! LspImplementation lua vim.lsp.buf.implementation()")
     vim.cmd("command! LspDiagPrev lua vim.lsp.diagnostic.goto_prev()")
     vim.cmd("command! LspDiagNext lua vim.lsp.diagnostic.goto_next()")
-    vim.cmd("command! LspDiagLine lua vim.lsp.diagnostic.show_line_diagnostics()")
+    -- vim.cmd("command! LspDiagFloat lua vim.lsp.diagnostic.open_float()")
     vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")
     buf_map(bufnr, "n", "gd", ":LspDef<CR>")
     buf_map(bufnr, "n", "gr", ":LspRename<CR>")
@@ -32,10 +32,13 @@ local on_attach = function(client, bufnr)
     buf_map(bufnr, "n", "[a", ":LspDiagPrev<CR>")
     buf_map(bufnr, "n", "]a", ":LspDiagNext<CR>")
     buf_map(bufnr, "n", "ga", ":LspCodeAction<CR>")
-    buf_map(bufnr, "n", "<Leader>a", ":LspDiagLine<CR>")
+    -- buf_map(bufnr, "n", "<Leader>a", ":LspDiagFloat<CR>")
     buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
-    if client.resolved_capabilities.document_formatting then
-        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+
+    vim.api.nvim_create_user_command("Format", vim.lsp.buf.format, {})
+
+    if client.server_capabilities.document_formatting then
+        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
     end
 end
 
@@ -119,31 +122,40 @@ require 'lspconfig'.tailwindcss.setup {
     on_attach = on_attach
 }
 
+require("typescript").setup({
+    disable_commands = false, -- prevent the plugin from creating Vim commands
+    disable_formatting = false, -- disable tsserver's formatting capabilities
+    debug = false, -- enable debug logging for commands
+    server = { -- pass options to lspconfig's setup method
+        on_attach = on_attach
+    },
+})
 
-require 'lspconfig'.tsserver.setup {
-    capabilities = capabilities,
-    cmd = lang_servers_cmd.tsserver,
-    on_attach = function(client, bufnr)
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-        local ts_utils = require("nvim-lsp-ts-utils")
-        ts_utils.setup({
-            eslint_bin = lang_servers_cmd.eslint_d_bin,
-            eslint_enable_diagnostics = true,
-            eslint_enable_code_actions = true,
-            enable_formatting = true,
-            formatter = "prettier",
-            -- disable 'Could not find a declaration file for module..'
-            filter_out_diagnostics_by_code = { 7016 },
-        })
-        ts_utils.setup_client(client)
-        -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
-        -- buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
-        -- buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
+-- require 'lspconfig'.tsserver.setup {
+--     capabilities = capabilities,
+--     cmd = lang_servers_cmd.tsserver,
+--     on_attach = function(client, bufnr)
+--         client.server_capabilities.document_formatting = false
+--         client.server_capabilities.document_range_formatting = false
+--         local ts_utils = require("nvim-lsp-ts-utils")
+--         ts_utils.setup({
+--             eslint_bin = lang_servers_cmd.eslint_d_bin,
+--             eslint_enable_diagnostics = true,
+--             eslint_enable_code_actions = true,
+--             enable_formatting = true,
+--             formatter = "prettier",
+--             -- disable 'Could not find a declaration file for module..'
+--             filter_out_diagnostics_by_code = { 7016 },
+--         })
+--         ts_utils.setup_client(client)
+--         -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+--         -- buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
+--         -- buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
+--
+--         on_attach(client, bufnr)
+--     end,
+-- }
 
-        on_attach(client, bufnr)
-    end,
-}
 --require'lspconfig'["null-ls"].setup({ capabilities = capabilities, on_attach = on_attach })
 
 -- vim
@@ -219,7 +231,7 @@ cmp.setup({
 
 -- AUTO FORMATTING
 
-vim.api.nvim_command [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+-- vim.api.nvim_command [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 
 -- lsp shit that can't be done in lua atm.
 -- Note: This is even worse then writing vimscript (Can't believe that would be possible but here you go)

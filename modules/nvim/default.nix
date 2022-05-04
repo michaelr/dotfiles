@@ -1,6 +1,10 @@
-{ config, pkgs, lib, colorscheme, ... }:
+{ config, pkgs, lib, colorscheme, nvim-plugin-typescript, ... }:
 let
-  vimPlugsFromSource = (import ./plugins.nix) pkgs;
+  vimPlugsFromSource = (import ./plugins.nix)
+    {
+      pkgs = pkgs;
+      nvim-plugin-typescript = nvim-plugin-typescript;
+    };
 in
 {
   home.packages = with pkgs; [
@@ -130,7 +134,7 @@ in
       # fast motion
       lightspeed-nvim
 
-    ];
+    ] ++ [ vimPlugsFromSource.nvim-plugin-typescript ];
 
     # cmake = {"${pkgs.cmake-language-server}/bin/cmake-language-server"},
     extraConfig = ''

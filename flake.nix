@@ -13,6 +13,11 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
+    nvim-plugin-typescript = {
+      url = github:jose-elias-alvarez/typescript.nvim;
+      flake = false;
+    };
+
     fish-nix-env = {
       url = github:lilyball/nix-env.fish;
       flake = false;
@@ -36,7 +41,7 @@
 
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils-plus, home-manager, fish-nix-env, fish-theme-bobthefish, nixpkgs-sumneko-3-2, ... }:
+  outputs = inputs@{ self, nixpkgs, flake-utils-plus, home-manager, fish-nix-env, fish-theme-bobthefish, nixpkgs-sumneko-3-2, nvim-plugin-typescript, ... }:
     let
       sumneko-overlay = final: prev: {
         sumneko-3-2 = nixpkgs-sumneko-3-2.legacyPackages.${prev.system};
@@ -78,6 +83,7 @@
         (import ./machines/nixos-vmware {
           fish-nix-env = fish-nix-env;
           fish-theme-bobthefish = fish-theme-bobthefish;
+          nvim-plugin-typescript = nvim-plugin-typescript;
         })
 
       ];

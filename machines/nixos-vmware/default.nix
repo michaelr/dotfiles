@@ -1,4 +1,4 @@
-{ fish-nix-env, fish-theme-bobthefish }:
+{ fish-nix-env, fish-theme-bobthefish, nvim-plugin-typescript }:
 { lib, pkgs, config, modulesPath, ... }:
 
 with lib;
@@ -160,6 +160,7 @@ in
     # TODO: get rid of this hack
     _module.args = {
       colorscheme = (import ../../colorschemes/dracula.nix);
+      nvim-plugin-typescript = nvim-plugin-typescript;
     };
 
     imports = [
