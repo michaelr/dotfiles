@@ -517,7 +517,15 @@ in
         bind-key "?" list-keys
         bind-key "E" select-layout -E
         bind-key "[" copy-mode
-        bind-key "s" choose-session
+        # bind-key "s" choose-session
+
+        # https://waylonwalker.com/tmux-fzf-session-jump/
+        bind-key "s" display-popup -E "\
+          tmux list-sessions -F '#{?session_attached,,#{session_name}}' |\
+          sed '/^$/d' |\
+          fzf --reverse --header jump-to-session --preview 'tmux capture-pane -pt {}'  |\
+          xargs tmux switch-client -t"
+
         bind-key "r" source-file ~/.config/tmux/tmux.conf
         # change pane split orientation
         bind -n S-Up move-pane -h -t '.{up-of}'
