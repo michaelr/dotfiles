@@ -55,6 +55,8 @@
     flake-utils-plus.lib.mkFlake {
       inherit self inputs nixosModules;
 
+      channelsConfig.allowUnfree = true;
+
       hostDefaults = {
         system = "x86_64-linux";
         modules = [
