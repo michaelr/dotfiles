@@ -262,6 +262,8 @@ in
         ncspot
         spotdl
         downonspot
+
+        discord
       ];
 
       file.".local/bin/git-wt-clone".source = ../../users/michaelr/local-bin/git-wt-clone;
