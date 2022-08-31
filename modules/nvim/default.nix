@@ -79,9 +79,9 @@ in
       null-ls-nvim
       nvim-lsp-ts-utils
 
-      #      nvim-treesitter
-      #      nvim-treesitter-refactor
-      #      nvim-treesitter-textobjects
+      #  nvim-treesitter
+      #  nvim-treesitter-refactor
+      #  nvim-treesitter-textobjects
 
       ## Autocompletion setup
       nvim-cmp
@@ -100,7 +100,7 @@ in
       tcomment_vim # vimscript
 
       # Git
-      gitsigns-nvim
+      # gitsigns-nvim
 
       # DAP
       #vimPlugsFromSource.nvim-dap-python
@@ -170,12 +170,10 @@ in
 
         ${builtins.readFile ./nvim-tree.lua}
         ${builtins.readFile ./sane_defaults.lua}
-        ${builtins.readFile ./treesitter.lua}
         ${builtins.readFile ./telescope.lua}
         ${builtins.readFile ./tabs.lua}
         ${builtins.readFile ./lsp.lua}
         ${builtins.readFile ./statusline.lua}
-        ${builtins.readFile ./git.lua}
         ${builtins.readFile ./todo.lua}
         ${builtins.readFile ./which_key.lua}
         ${builtins.readFile ./better_escape.lua}
@@ -185,5 +183,7 @@ in
       ${builtins.readFile ./theme.vim}
       ${builtins.readFile ./indentline.vim}
     '';
+    #${builtins.readFile ./git.lua}
+    #${builtins.readFile ./treesitter.lua}
   };
 }
