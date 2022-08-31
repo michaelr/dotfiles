@@ -194,7 +194,6 @@ in
         glow # markdown previewer
         mdcat # kitty md previewer with images
         termpdfpy # kitty pdf, epub terminal viewer
-        docker-compose_2
         docker-compose
         google-cloud-sdk
         cloud-sql-proxy

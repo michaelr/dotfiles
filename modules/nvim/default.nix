@@ -79,9 +79,9 @@ in
       null-ls-nvim
       nvim-lsp-ts-utils
 
-      nvim-treesitter
-      nvim-treesitter-refactor
-      nvim-treesitter-textobjects
+      #      nvim-treesitter
+      #      nvim-treesitter-refactor
+      #      nvim-treesitter-textobjects
 
       ## Autocompletion setup
       nvim-cmp
