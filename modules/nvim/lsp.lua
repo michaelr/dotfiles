@@ -34,7 +34,7 @@ local on_attach = function(client, bufnr)
     buf_map(bufnr, "n", "ga", ":LspCodeAction<CR>")
     buf_map(bufnr, "n", "<Leader>a", ":LspDiagLine<CR>")
     buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.documentFormattingProvider then
         vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
     end
 end
@@ -124,8 +124,8 @@ require 'lspconfig'.tsserver.setup {
     capabilities = capabilities,
     cmd = lang_servers_cmd.tsserver,
     on_attach = function(client, bufnr)
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
 
         vim.cmd("autocmd BufWritePre <buffer> :Neoformat")
 
