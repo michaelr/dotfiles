@@ -1,10 +1,3 @@
-vim.g.nvim_tree_show_icons = {
-    git = 1,
-    folders = 1,
-    files = 1,
-    folder_arrows = 0
-}
-
 require 'nvim-tree'.setup {
     -- update the focused file on `BufEnter`, un-collapses the folders
     -- recursively until it finds the file
@@ -17,6 +10,15 @@ require 'nvim-tree'.setup {
         }
     },
     renderer = {
+        icons = {
+            show = {
+                git = true,
+                folder = true,
+                file = true,
+                folder_arrow = false
+            },
+
+        },
         indent_markers = {
             enable = true
         }
