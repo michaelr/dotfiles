@@ -246,7 +246,7 @@ in
         sd
         mtr
         plocate
-        magic-wormhole
+        # magic-wormhole
         xh
         lazydocker
         lazygit
