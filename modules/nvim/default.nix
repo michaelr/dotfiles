@@ -93,6 +93,9 @@ in
       luasnip # for cmp
       cmp_luasnip
 
+      # Snippets
+      friendly-snippets
+
       rust-tools-nvim
       symbols-outline-nvim
 
