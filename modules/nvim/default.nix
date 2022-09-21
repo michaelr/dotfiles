@@ -103,7 +103,7 @@ in
       tcomment_vim # vimscript
 
       # Git
-      # gitsigns-nvim
+      gitsigns-nvim
 
       # DAP
       #vimPlugsFromSource.nvim-dap-python
@@ -172,6 +172,7 @@ in
         }
 
         ${builtins.readFile ./better_escape.lua}
+        ${builtins.readFile ./git.lua}
         ${builtins.readFile ./lsp.lua}
         ${builtins.readFile ./nvim-tree.lua}
         ${builtins.readFile ./sane_defaults.lua}
@@ -187,7 +188,6 @@ in
       ${builtins.readFile ./theme.vim}
       ${builtins.readFile ./indentline.vim}
     '';
-    #${builtins.readFile ./git.lua}
     #${builtins.readFile ./treesitter.lua}
   };
 }
