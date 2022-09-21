@@ -79,9 +79,10 @@ in
       null-ls-nvim
       nvim-lsp-ts-utils
 
-      #  nvim-treesitter
-      #  nvim-treesitter-refactor
-      #  nvim-treesitter-textobjects
+      vimPlugsFromSource.nvim-treesitter
+      #nvim-treesitter
+      nvim-treesitter-refactor
+      nvim-treesitter-textobjects
 
       ## Autocompletion setup
       nvim-cmp
@@ -181,6 +182,7 @@ in
         ${builtins.readFile ./tabs.lua}
         ${builtins.readFile ./telescope.lua}
         ${builtins.readFile ./todo.lua}
+        ${builtins.readFile ./treesitter.lua}
         ${builtins.readFile ./which_key.lua}
 
       EOF
@@ -188,6 +190,5 @@ in
       ${builtins.readFile ./theme.vim}
       ${builtins.readFile ./indentline.vim}
     '';
-    #${builtins.readFile ./treesitter.lua}
   };
 }
