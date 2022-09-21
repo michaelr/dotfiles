@@ -171,15 +171,16 @@ in
 
         }
 
+        ${builtins.readFile ./better_escape.lua}
+        ${builtins.readFile ./lsp.lua}
         ${builtins.readFile ./nvim-tree.lua}
         ${builtins.readFile ./sane_defaults.lua}
-        ${builtins.readFile ./telescope.lua}
-        ${builtins.readFile ./tabs.lua}
-        ${builtins.readFile ./lsp.lua}
+        ${builtins.readFile ./snippets.lua}
         ${builtins.readFile ./statusline.lua}
+        ${builtins.readFile ./tabs.lua}
+        ${builtins.readFile ./telescope.lua}
         ${builtins.readFile ./todo.lua}
         ${builtins.readFile ./which_key.lua}
-        ${builtins.readFile ./better_escape.lua}
 
       EOF
 

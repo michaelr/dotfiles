@@ -221,7 +221,6 @@ cmp.setup({
     }
 })
 
-
 -- AUTO FORMATTING
 
 -- vim.api.nvim_command [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
