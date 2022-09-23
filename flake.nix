@@ -21,11 +21,6 @@
       flake = false;
     };
 
-    wsl-open = {
-      url = github:4U6U57/wsl-open;
-      flake = false;
-    };
-
     flake-utils-plus.url = github:gytis-ivaskevicius/flake-utils-plus;
 
     deploy-rs = {
