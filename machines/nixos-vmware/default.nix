@@ -1,4 +1,4 @@
-{ fish-nix-env, fish-theme-bobthefish }:
+{ fish-theme-bobthefish }:
 { lib, pkgs, config, modulesPath, ... }:
 
 with lib;
@@ -585,11 +585,6 @@ in
           src = fish-theme-bobthefish;
         }
 
-        # this is only needed for non-NixOS or for NixOS-WSL installs
-        {
-          name = "nix-env";
-          src = fish-nix-env;
-        }
       ];
 
       shellAliases = {

@@ -11,11 +11,6 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-    fish-nix-env = {
-      url = github:lilyball/nix-env.fish;
-      flake = false;
-    };
-
     fish-theme-bobthefish = {
       url = github:oh-my-fish/theme-bobthefish;
       flake = false;
@@ -35,7 +30,6 @@
     , nixpkgs
     , flake-utils-plus
     , home-manager
-    , fish-nix-env
     , fish-theme-bobthefish
     , /*nixpkgs-sumneko-3-2,*/ ...
     }:
@@ -80,7 +74,6 @@
       hosts.zner.modules = [ ./machines/zner nixosModules.docker ];
       hosts.nixos-vmware.modules = [
         (import ./machines/nixos-vmware {
-          fish-nix-env = fish-nix-env;
           fish-theme-bobthefish = fish-theme-bobthefish;
         })
 
