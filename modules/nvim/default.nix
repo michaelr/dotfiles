@@ -65,6 +65,9 @@ in
       lualine-nvim
       dracula-vim
 
+      # sessions
+      auto-session
+
       # tmux integration
       vim-tmux-navigator
 
@@ -175,6 +178,7 @@ in
 
         }
 
+        ${builtins.readFile ./auto-session.lua}
         ${builtins.readFile ./better_escape.lua}
         ${builtins.readFile ./git.lua}
         ${builtins.readFile ./lsp.lua}
