@@ -37,9 +37,14 @@
       #sumneko-overlay = final: prev: {
       #  sumneko-3-2 = nixpkgs-sumneko-3-2.legacyPackages.${prev.system};
       #};
+      fishOverlay = f: p: {
+        inherit fish-theme-bobthefish;
+      };
+
       overlays = [
         inputs.neovim-nightly-overlay.overlay
         inputs.nur.overlay
+        fishOverlay
         # sumneko-overlay
       ];
 
@@ -72,12 +77,7 @@
       sharedOverlays = overlays;
 
       hosts.zner.modules = [ ./machines/zner nixosModules.docker ];
-      hosts.nixos-vmware.modules = [
-        (import ./machines/nixos-vmware {
-          fish-theme-bobthefish = fish-theme-bobthefish;
-        })
-
-      ];
+      hosts.nixos-vmware.modules = [ ./machines/nixos-vmware ];
 
       outputsBuilder = (channels: {
         devShell = channels.nixpkgs.mkShell {

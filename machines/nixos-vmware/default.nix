@@ -1,4 +1,3 @@
-{ fish-theme-bobthefish }:
 { lib, pkgs, config, modulesPath, ... }:
 
 with lib;
@@ -582,7 +581,7 @@ in
 
         {
           name = "theme-bobthefish";
-          src = fish-theme-bobthefish;
+          src = pkgs.fish-theme-bobthefish;
         }
 
       ];
