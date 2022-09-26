@@ -85,6 +85,7 @@ in
       #nvim-treesitter
       nvim-treesitter-refactor
       nvim-treesitter-textobjects
+      nvim-treesitter-context
 
       ## Autocompletion setup
       nvim-cmp
