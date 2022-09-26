@@ -8,7 +8,7 @@
 
   nix = {
     # Currently needed for flake support, might not be needed in the future
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs = true

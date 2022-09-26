@@ -135,7 +135,7 @@ in
     gnumake
     lsof
     killall
-    rxvt_unicode
+    rxvt-unicode-unwrapped
     xclip
     # This is needed for the vmware user tools clipboard to work.
     # You can test if you don't need this by deleting this and seeing
