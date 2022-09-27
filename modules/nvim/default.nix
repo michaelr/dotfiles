@@ -92,8 +92,8 @@ in
       null-ls-nvim
       nvim-lsp-ts-utils
 
-      vimPlugsFromSource.nvim-treesitter
-      #nvim-treesitter
+      #vimPlugsFromSource.nvim-treesitter
+      nvim-treesitter
       nvim-treesitter-refactor
       nvim-treesitter-textobjects
       nvim-treesitter-context
