@@ -5,8 +5,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # nixpkgs-sumneko-3-2.url = "github:NixOS/nixpkgs?rev=36563d95276f3bf4b144e6e3b355e666ca9f97f4";
-
     nur.url = "github:nix-community/NUR";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -31,12 +29,9 @@
     , flake-utils-plus
     , home-manager
     , fish-theme-bobthefish
-    , /*nixpkgs-sumneko-3-2,*/ ...
+    , ...
     }:
     let
-      #sumneko-overlay = final: prev: {
-      #  sumneko-3-2 = nixpkgs-sumneko-3-2.legacyPackages.${prev.system};
-      #};
       fishOverlay = f: p: {
         inherit fish-theme-bobthefish;
       };
@@ -45,7 +40,6 @@
         inputs.neovim-nightly-overlay.overlay
         inputs.nur.overlay
         fishOverlay
-        # sumneko-overlay
       ];
 
       nixosModules = flake-utils-plus.lib.exportModules (

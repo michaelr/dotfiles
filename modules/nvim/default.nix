@@ -6,18 +6,23 @@ in
   home.packages = with pkgs; [
     # C
     gcc
+
     # Clojure
-    clojure
+    # clojure
+
     # elixir
     elixir
     #hex
     #rebar3
+
     # go
     go
+
     # Haskell
-    ghc
-    haskellPackages.cabal-install
-    haskellPackages.stack
+    # ghc
+    # haskellPackages.cabal-install
+    # haskellPackages.stack
+
     # JavaScript
     nodejs
     yarn
@@ -25,11 +30,15 @@ in
     nodePackages.prettier
     nodePackages.typescript-language-server
     nodePackages.typescript
+
     # lua
     lua
+    sumneko-lua-language-server
+
     # markdown
     nodePackages.livedown
     pandoc
+
     # python
     (python3.withPackages (ps: with ps; [ setuptools pip debugpy ]))
     poetry
@@ -38,18 +47,17 @@ in
     python3Packages.ipython
     python3Packages.parso
     python3Packages.twine
-    # rust
-    rustc
-    cargo
-    rustfmt
-    cargo-tarpaulin
-    perl # perl (this is required by rust)
-    lldb # debugging setup
-    rust-analyzer
-    clippy
 
-    sumneko-lua-language-server
-  ]; # ++ [ pkgs.sumneko-3-2.sumneko-lua-language-server ];
+    # rust
+    # rustc
+    # cargo
+    # rustfmt
+    # cargo-tarpaulin
+    # perl # perl (this is required by rust)
+    # lldb # debugging setup
+    # rust-analyzer
+    # clippy
+  ];
 
   programs.neovim = {
     enable = true;

@@ -103,20 +103,6 @@ in
 
   virtualisation.vmware.guest.enable = true;
 
-
-  # fileSystems."/host" = {
-  #   fsType = "fuse./run/current-system/sw/bin/vmhgfs-fuse";
-  #   device = ".host:/";
-  #   options = [
-  #     "umask=22"
-  #     "uid=1000"
-  #     "gid=1000"
-  #     "allow_other"
-  #     "auto_unmount"
-  #     "defaults"
-  #   ];
-  # };
-  #
   time.timeZone = "America/Chicago";
 
   users.mutableUsers = false;
@@ -143,15 +129,6 @@ in
     gtkmm3
 
   ];
-
-  # nix = {
-  #   package = pkgs.nixFlakes;
-  #   extraOptions = ''
-  #     experimental-features = nix-command flakes
-  #     keep-outputs = true
-  #     keep-derivations = true
-  #   '';
-  # };
 
   nixpkgs.config.allowUnfree = true;
 
