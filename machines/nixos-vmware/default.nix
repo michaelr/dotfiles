@@ -512,9 +512,12 @@ in
         # reload history - to use commands from a different fish shell
         hr = "history --merge";
 
+        # nix
         config = "nvim $HOME/.dotfiles";
+        rebuild = "nixos-rebuild switch --use-remote-sudo --flake \"$HOME/.dotfiles\" -v";
+        garbage = "sudo nix-collect-garbage -d";
 
-
+        # select project directory to open/start tmux session
         p = "fd -H -td '^\.git$' -tf --search-path ~/code -x echo {//} | fzf | xargs project-session.sh";
 
         fly = "flyctl";
