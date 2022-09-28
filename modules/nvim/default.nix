@@ -1,6 +1,7 @@
-{ config, pkgs, lib, colorscheme, ... }:
+{ config, pkgs, lib, ... }:
 let
   vimPlugsFromSource = (import ./plugins.nix) pkgs;
+  colorscheme = (import ../../colorschemes/dracula.nix);
 in
 {
   home.packages = with pkgs; [

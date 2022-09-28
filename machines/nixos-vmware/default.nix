@@ -133,15 +133,11 @@ in
   nixpkgs.config.allowUnfree = true;
 
   home-manager.users.${defaultUser} = {
-    # TODO: get rid of this hack
-    _module.args = {
-      colorscheme = (import ../../colorschemes/dracula.nix);
-    };
-
     imports = [
       ../../modules/nvim
       ../../modules/git.nix
     ];
+
     xdg.enable = true;
 
     home = rec {

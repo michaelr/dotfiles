@@ -1,4 +1,7 @@
-{ config, pkgs, libs, colorscheme, ... }:
+{ config, pkgs, libs, ... }:
+let
+  colorscheme = (import ../colorschemes/dracula.nix);
+in
 {
   home.packages = with pkgs; [
     git-crypt
