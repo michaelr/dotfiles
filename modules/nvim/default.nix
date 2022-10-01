@@ -41,13 +41,13 @@ in
     pandoc
 
     # python
-    (python3.withPackages (ps: with ps; [ setuptools pip debugpy ]))
-    poetry
-    autoflake
-    python3Packages.pip
-    python3Packages.ipython
-    python3Packages.parso
-    python3Packages.twine
+    # (python3.withPackages (ps: with ps; [ setuptools pip debugpy ]))
+    # poetry
+    # autoflake
+    # python3Packages.pip
+    # python3Packages.ipython
+    # python3Packages.parso
+    # python3Packages.twine
 
     # rust
     # rustc
