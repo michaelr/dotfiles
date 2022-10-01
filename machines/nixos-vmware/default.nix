@@ -112,7 +112,7 @@ in
     isNormalUser = true;
     # NOTE: on nixos-wsl you have to use the nix-env fish plugin if $SHELL=fish
     shell = pkgs.fish;
-    password = "michaelr";
+    password = defaultUser;
     extraGroups = [ "wheel" "docker" "audio" "sound" "video" "jackaudio" ];
   };
 
@@ -238,17 +238,17 @@ in
         weechat
       ];
 
-      file.".local/bin/git-wt-clone".source = ../../users/michaelr/local-bin/git-wt-clone;
-      file.".local/bin/project-session.sh".source = ../../users/michaelr/local-bin/project-session.sh;
+      file.".local/bin/git-wt-clone".source = ../../users + "/${defaultUser}/local-bin/git-wt-clone";
+      file.".local/bin/project-session.sh".source = ../../users + "/${defaultUser}/local-bin/project-session.sh";
 
 
     };
 
-    xresources.extraConfig = builtins.readFile ../../users/michaelr/Xresources;
+    xresources.extraConfig = builtins.readFile (../../users + "/${defaultUser}/Xresources");
 
 
-    xdg.configFile."i3/config".text = builtins.readFile ../../users/michaelr/i3;
-    xdg.configFile."rofi/config.rasi".text = builtins.readFile ../../users/michaelr/rofi;
+    xdg.configFile."i3/config".text = builtins.readFile (../../users + "/${defaultUser}/i3");
+    xdg.configFile."rofi/config.rasi".text = builtins.readFile (../../users + "/${defaultUser}/rofi");
     xdg.configFile."glow/glow.yml".text = ''
       style: "auto"
       local: false
@@ -367,7 +367,7 @@ in
 
     programs.kitty = {
       enable = true;
-      extraConfig = builtins.readFile ../../users/michaelr/kitty;
+      extraConfig = builtins.readFile (../../users + "/${defaultUser}/kitty");
     };
 
     programs.i3status-rust = {
@@ -377,12 +377,15 @@ in
         bottom = {
           blocks = [
             {
-              block = "focused_window";
-              show_marks = "visible";
+              block = "
+        focused_window ";
+              show_marks = "
+        visible ";
             }
             {
-              block = "docker";
-              format = "{running}/{total}";
+              block = "
+        docker ";
+              format = " { running }/{total}";
             }
             {
               block = "disk_space";
@@ -449,7 +452,7 @@ in
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
-      stdlib = builtins.readFile ../../users/michaelr/direnvrc;
+      stdlib = builtins.readFile (../../users + "/${defaultUser}/direnvrc");
     };
 
     programs.tmux = {
@@ -468,7 +471,7 @@ in
         }
       ];
 
-      extraConfig = builtins.readFile ../../users/michaelr/tmux.conf;
+      extraConfig = builtins.readFile (../../users + "/${defaultUser}/tmux.conf");
 
     };
 
@@ -556,7 +559,7 @@ in
         fish_add_path ~/.local/bin
 
         # these shouldn't be needed but just for reference this will set the path right
-        # fish_add_path -m /etc/profiles/per-user/michaelr/bin/
+        # fish_add_path -m /etc/profiles/per-user/{$defaultUser}/bin/
         # fish_add_path -m /run/current-system/sw/bin/
         # fish_add_path -m /run/wrappers/bin/
 
