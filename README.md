@@ -10,10 +10,15 @@
 Variations of "man shaving a yak".  
 See [yak shaving](https://joi.ito.com/weblog/2005/03/05/yak-shaving.html)
 
-> This is my system config. There are many like it, but this one is mine.
+> This is my system config.
 >
-> My system config is my best friend. It is my life. I must master it as I must
-> master my life.[^riflecreed]
+> There are many like it, but this one is mine.
+>
+> My system config is my best friend.
+>
+> It is my life.
+>
+> I must master it as I must master my life.[^riflecreed]
 
 
 [^riflecreed]: Adapted from 'My Rifle – The Creed of a United States Marine'
