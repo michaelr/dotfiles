@@ -6,7 +6,9 @@
 <img src="imgs/dalle-yak-shave4-small.png" alt="man shaving yak 4">&nbsp;
 <img src="imgs/dalle-yak-shave5-small.png" alt="man shaving yak 5">[^1]
 
-[^1]: Images courtesy of open ai dall-e. variations of "man shaving a yak"
+[^1]: Images courtesy of open ai dall-e.  
+Variations of "man shaving a yak".  
+See [yak shaving](https://joi.ito.com/weblog/2005/03/05/yak-shaving.html)
 
 > This is my system config. There are many like it, but this one is mine.
 >
