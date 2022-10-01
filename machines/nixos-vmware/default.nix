@@ -382,7 +382,7 @@ in
             }
             {
               block = "docker";
-              format = " { running }/{total}";
+              format = "{running}/{total}";
             }
             {
               block = "disk_space";
