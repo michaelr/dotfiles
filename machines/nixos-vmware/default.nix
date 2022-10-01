@@ -509,7 +509,7 @@ in
         hr = "history --merge";
 
         # nix
-        config = "nvim $HOME/.dotfiles";
+        dots = "cd ~/.dotfiles/ && tmux new -s dots 'nvim'";
         rebuild = "nixos-rebuild switch --use-remote-sudo --flake \"$HOME/.dotfiles\" -v";
         garbage = "sudo nix-collect-garbage -d";
 
