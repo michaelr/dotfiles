@@ -377,14 +377,11 @@ in
         bottom = {
           blocks = [
             {
-              block = "
-        focused_window ";
-              show_marks = "
-        visible ";
+              block = "focused_window";
+              show_marks = "visible";
             }
             {
-              block = "
-        docker ";
+              block = "docker";
               format = " { running }/{total}";
             }
             {
