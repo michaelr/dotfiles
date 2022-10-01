@@ -239,7 +239,7 @@ in
       ];
 
       file.".local/bin/git-wt-clone".source = ../../users + "/${defaultUser}/local-bin/git-wt-clone";
-      file.".local/bin/project-session.sh".source = ../../users + "/${defaultUser}/local-bin/project-session.sh";
+      file.".local/bin/project-session".source = ../../users + "/${defaultUser}/local-bin/project-session";
 
 
     };
@@ -517,7 +517,7 @@ in
         garbage = "sudo nix-collect-garbage -d";
 
         # select project directory to open/start tmux session
-        p = "fd -H -td '^\.git$' -tf --search-path ~/code -x echo {//} | fzf | xargs project-session.sh";
+        p = "fd -H -td '^\.git$' -tf --search-path ~/code -x echo {//} | fzf | xargs project-session";
 
         fly = "flyctl";
       };
