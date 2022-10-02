@@ -3,6 +3,10 @@
 with lib;
 let
   defaultUser = "michaelr";
+  userConf = ../../users + "/${defaultUser}";
+  localBinSrc = userConf + "/local-bin";
+  localBin = ".local/bin";
+  readUserConfFile = f: builtins.readFile (userConf + "/${f}");
 in
 {
 
@@ -238,17 +242,21 @@ in
         weechat
       ];
 
-      file.".local/bin/git-wt-clone".source = ../../users + "/${defaultUser}/local-bin/git-wt-clone";
-      file.".local/bin/project-session".source = ../../users + "/${defaultUser}/local-bin/project-session";
+      file = {
+        "${localBin}/git-wt-clone".source = localBinSrc + "/git-wt-clone";
+        "${localBin}/project-session".source = localBinSrc + "/project-session";
+      };
+
+      # i could do something like this: file = map { ".local/bin/${name}.source = ${path} + "/${name}"
 
 
     };
 
-    xresources.extraConfig = builtins.readFile (../../users + "/${defaultUser}/Xresources");
+    xresources.extraConfig = readUserConfFile "Xresources";
 
 
-    xdg.configFile."i3/config".text = builtins.readFile (../../users + "/${defaultUser}/i3");
-    xdg.configFile."rofi/config.rasi".text = builtins.readFile (../../users + "/${defaultUser}/rofi");
+    xdg.configFile."i3/config".text = readUserConfFile "i3";
+    xdg.configFile."rofi/config.rasi".text = readUserConfFile "rofi";
     xdg.configFile."glow/glow.yml".text = ''
       style: "auto"
       local: false
@@ -363,7 +371,7 @@ in
 
     programs.kitty = {
       enable = true;
-      extraConfig = builtins.readFile (../../users + "/${defaultUser}/kitty");
+      extraConfig = readUserConfFile "kitty";
     };
 
     programs.i3status-rust = {
@@ -428,7 +436,7 @@ in
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
-      stdlib = builtins.readFile (../../users + "/${defaultUser}/direnvrc");
+      stdlib = readUserConfFile "direnvrc";
     };
 
     programs.tmux = {
@@ -447,7 +455,7 @@ in
         }
       ];
 
-      extraConfig = builtins.readFile (../../users + "/${defaultUser}/tmux.conf");
+      extraConfig = readUserConfFile "tmux.conf";
 
     };
 
