@@ -257,13 +257,7 @@ in
 
     xdg.configFile."i3/config".text = readUserConfFile "i3";
     xdg.configFile."rofi/config.rasi".text = readUserConfFile "rofi";
-    xdg.configFile."glow/glow.yml".text = ''
-      style: "auto"
-      local: false
-      mouse: true 
-      pager: true
-      width: 80
-    '';
+    xdg.configFile."glow/glow.yml".text = readUserConfFile "glow.yml";
 
     programs.firefox = {
       enable = true;
