@@ -445,13 +445,7 @@ in
       plugins = with pkgs.tmuxPlugins; [
         {
           plugin = dracula;
-          extraConfig = ''
-            set -g @dracula-plugins "battery"
-            set -g @dracula-show-powerline true
-            set -g @dracula-refresh-rate 10
-            set -g @dracula-show-left-icon session
-            set -g @dracula-show-timezone false
-          '';
+          extraConfig = readUserConfFile "tmux-dracula.conf";
         }
       ];
 
@@ -520,36 +514,8 @@ in
         gwc = "git-wt-clone";
       };
 
-      interactiveShellInit = ''
-        set -g SHELL ${pkgs.fish}/bin/fish
-        # disable fish greeting
-        set -g fish_greeting ""
-
-        # theme-bobthefish settings
-        set -g theme_color_scheme dracula
-        set -g theme_nerd_fonts yes
-        set -g theme_date_format "+%l:%M%p %a %b %d"
-        set -g theme_display_cmd_duration no
-
-        # this was causing slowdowns on wsl
-        set -g theme_display_ruby no
-
-        # direnv hook
-        direnv hook fish | source
-
-      '';
-
-      shellInit = ''
-        fish_add_path ~/.local/bin
-
-        # these shouldn't be needed but just for reference this will set the path right
-        # fish_add_path -m /etc/profiles/per-user/{$defaultUser}/bin/
-        # fish_add_path -m /run/current-system/sw/bin/
-        # fish_add_path -m /run/wrappers/bin/
-
-        # this is only needed for non NixOS installs
-        # fenv export NIX_PATH=\$HOME/.nix-defexpr/channels\''${NIX_PATH:+:}\$NIX_PATH
-      '';
+      interactiveShellInit = readUserConfFile "interactive-shell-init.fish";
+      shellInit = readUserConfFile "shell-init.fish";
     };
 
   };
