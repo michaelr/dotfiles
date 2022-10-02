@@ -228,3 +228,6 @@ bar {
         binding_mode       #FF5555 #FF5555 #F8F8F2
     }
 }
+
+# startup on i3 start
+exec kitty
