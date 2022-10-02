@@ -1,4 +1,4 @@
-set -g SHELL ${pkgs.fish}/bin/fish
+set -g SHELL fish
 # disable fish greeting
 set -g fish_greeting ""
 
