@@ -95,6 +95,7 @@ in
       lsp_signature-nvim
       null-ls-nvim
       nvim-lsp-ts-utils
+      lsp-format-nvim
 
       #vimPlugsFromSource.nvim-treesitter
       nvim-treesitter

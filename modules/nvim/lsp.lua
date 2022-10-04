@@ -3,6 +3,8 @@
 -- capabilities.textDocument.completion.completionItem.snippetSupport = true
 --
 --
+require("lsp-format").setup {}
+
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol
     .make_client_capabilities())
 
@@ -34,8 +36,9 @@ local on_attach = function(client, bufnr)
     buf_map(bufnr, "n", "ga", ":LspCodeAction<CR>")
     buf_map(bufnr, "n", "<Leader>a", ":LspDiagLine<CR>")
     buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
+
     if client.server_capabilities.documentFormattingProvider then
-        vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+        require("lsp-format").on_attach(client, bufnr)
     end
 end
 
@@ -195,7 +198,8 @@ cmp.setup({
                 luasnip = "[snip]",
                 treesitter = "[tsit]"
             }
-        }) },
+        })
+    },
     mapping = {
         ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
         ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
@@ -220,25 +224,6 @@ cmp.setup({
         { name = 'buffer', keyword_length = 3 },
     }
 })
-
--- AUTO FORMATTING
-
--- vim.api.nvim_command [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
-
--- lsp shit that can't be done in lua atm.
--- Note: This is even worse then writing vimscript (Can't believe that would be possible but here you go)
--- vim.api.nvim_command(
---  'autocmd BufWritePre *.rs  lua vim.lsp.buf.formatting_sync(nil, 1000)')
--- vim.api.nvim_command(
---  'autocmd BufWritePre *.hs  lua vim.lsp.buf.formatting_sync(nil, 1000)')
--- vim.api.nvim_command(
---  'autocmd BufWritePre *.py  lua vim.lsp.buf.formatting_sync(nil, 1000)')
--- vim.api.nvim_command(
---  'autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 1000)')
--- vim.api.nvim_command(
---  'autocmd BufWritePre *.nix lua vim.lsp.buf.formatting_sync(nil, 1000)')
-
--- Prettify LSP diagnostic messages/icons
 
 require('lspkind').init({})
 
