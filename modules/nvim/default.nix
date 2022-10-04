@@ -77,6 +77,9 @@ in
       # sessions
       auto-session
 
+      # terminal
+      toggleterm-nvim
+
       # tmux integration
       vim-tmux-navigator
 
@@ -198,6 +201,7 @@ in
         ${builtins.readFile ./tabs.lua}
         ${builtins.readFile ./telescope.lua}
         ${builtins.readFile ./todo.lua}
+        ${builtins.readFile ./toggleterm.lua}
         ${builtins.readFile ./treesitter.lua}
         ${builtins.readFile ./which_key.lua}
 
