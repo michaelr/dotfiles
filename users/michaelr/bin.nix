@@ -7,7 +7,8 @@ in
     ${setDefaultBashAttrs}
 
     if [ -z "''${1-}" ]; then
-      echo "Usage: dvt template"
+      echo "Error! usage: dvt template"
+      echo ""
       dvts
       exit 1
     fi
@@ -19,8 +20,9 @@ in
   (writeShellScriptBin "dvts" ''
     ${setDefaultBashAttrs}
 
-    echo "Available templates"
-    nix flake show --json "github:michaelr/my-dev-templates" | jq '.templates' 
+    echo "Available templates:"
+    nix flake show --json "github:michaelr/my-dev-templates" | \
+      jq '.templates | to_entries | .[] | .key + " - " + .value.description'
   '')
 
 ]
