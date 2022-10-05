@@ -8,7 +8,7 @@ let
   localBin = ".local/bin";
   readUserConfFile = f: builtins.readFile (userConf + "/${f}");
   bin = import (userConf + "/bin.nix") {
-    inherit (pkgs) writeScriptBin;
+    inherit (pkgs) writeShellScriptBin;
   };
 in
 {
