@@ -7,6 +7,9 @@ let
   localBinSrc = userConf + "/local-bin";
   localBin = ".local/bin";
   readUserConfFile = f: builtins.readFile (userConf + "/${f}");
+  bin = import (userConf + "/bin.nix") {
+    inherit (pkgs) writeScriptBin;
+  };
 in
 {
 
@@ -240,7 +243,7 @@ in
 
         discord
         weechat
-      ];
+      ] ++ bin;
 
       file = {
         "${localBin}/git-wt-clone".source = localBinSrc + "/git-wt-clone";
