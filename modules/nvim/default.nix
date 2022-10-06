@@ -95,7 +95,6 @@ in
       lsp_signature-nvim
       null-ls-nvim
       nvim-lsp-ts-utils
-      lsp-format-nvim
 
       #vimPlugsFromSource.nvim-treesitter
       nvim-treesitter
@@ -155,6 +154,9 @@ in
       # fast motion
       lightspeed-nvim
 
+      # formatting
+      lsp-format-nvim
+      editorconfig-nvim
     ];
 
     # cmake = {"${pkgs.cmake-language-server}/bin/cmake-language-server"},
