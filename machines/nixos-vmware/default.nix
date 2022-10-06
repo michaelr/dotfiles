@@ -490,6 +490,7 @@ in
         dots = "cd ~/.dotfiles/ && tmux new -s dots 'nvim'";
         rebuild = "nixos-rebuild switch --use-remote-sudo --flake \"$HOME/.dotfiles\" -v";
         garbage = "sudo nix-collect-garbage -d";
+        optimise = "sudo nix store optimise";
 
         # select project directory to open/start tmux session
         p = "fd -H -td '^\.git$' -tf --search-path ~/code -x echo {//} | fzf | xargs project-session";
