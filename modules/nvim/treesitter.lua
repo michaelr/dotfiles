@@ -1,11 +1,11 @@
 require 'nvim-treesitter.configs'.setup {
     -- Note: installing nix grammer requires treesitter installed as command line too
-    ensure_installed = {
-        "bash", "c", "css", "dockerfile", "elixir", "fish", "go", "heex",
-        "help", "html", "javascript", "json", "lua", "make", "markdown",
-        "nix", "perl", "python", "regex", "ruby", "scss", "sql", "toml",
-        "tsx", "typescript", "vim", "yaml"
-    },
+    -- ensure_installed = {
+    --     "bash", "c", "css", "dockerfile", "elixir", "fish", "go", "heex",
+    --     "help", "html", "javascript", "json", "lua", "make", "markdown",
+    --     "nix", "perl", "python", "regex", "ruby", "scss", "sql", "toml",
+    --     "tsx", "typescript", "vim", "yaml"
+    -- },
     highlight = {
         enable = true,
     },
