@@ -82,6 +82,7 @@ in
 
       # tmux integration
       vim-tmux-navigator
+      vim-tpipeline
 
       # Programming
       which-key-nvim
