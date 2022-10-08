@@ -510,6 +510,7 @@ in
         gpl = "git pull";
         gf = "git fetch";
         gwc = "git-wt-clone";
+        gu = "git reset --soft HEAD~";
       };
 
       interactiveShellInit = readUserConfFile "interactive-shell-init.fish";
