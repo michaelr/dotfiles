@@ -27,8 +27,8 @@ vim.o.showmode = false
 vim.o.backup = false
 vim.o.writebackup = false
 
--- " Better display for messages
-vim.o.cmdheight = 2
+-- " Try out cmdheight = 0
+vim.o.cmdheight = 0
 
 -- You will have bad experience for diagnostic messages when it's default 4000.
 vim.o.updatetime = 300
