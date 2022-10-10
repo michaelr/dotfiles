@@ -25,4 +25,10 @@ in
       jq '.templates | to_entries | .[] | .key + " - " + .value.description'
   '')
 
+  (writeShellScriptBin "xrandr-print-output" ''
+    ${setDefaultBashAttrs}
+
+     xrandr | grep connected | grep -v disconnected | awk '{printf "%s", $1}'
+  '')
+
 ]

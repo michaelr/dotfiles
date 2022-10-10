@@ -495,6 +495,10 @@ in
         # select project directory to open/start tmux session
         p = "fd -H -td '^\.git$' -tf --search-path ~/code -x echo {//} | fzf | xargs project-session";
 
+        # xorg scaling
+        x-scale-zoom = "xrandr --output (xrandr-print-output) --scale 0.5";
+        x-scale-reset = "xrandr --output (xrandr-print-output) --scale 1";
+
         fly = "flyctl";
       };
 
