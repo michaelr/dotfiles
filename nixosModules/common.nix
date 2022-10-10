@@ -2,7 +2,7 @@
 
 {
 
-  time.timeZone = "America/Chicago";
+  # time.timeZone = "America/Chicago";
   services.openssh = { enable = true; };
   system.stateVersion = "21.11";
 

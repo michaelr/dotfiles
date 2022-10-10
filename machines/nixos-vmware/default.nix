@@ -110,7 +110,8 @@ in
 
   virtualisation.vmware.guest.enable = true;
 
-  time.timeZone = "America/Chicago";
+  # time.timeZone = "America/Chicago";
+  time.timeZone = "America/Denver";
 
   users.mutableUsers = false;
   users.groups.plocate = { };
