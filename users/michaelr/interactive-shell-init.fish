@@ -11,6 +11,9 @@ set -g theme_display_cmd_duration no
 # this was causing slowdowns on wsl
 set -g theme_display_ruby no
 
+# disable direnv logging (because I hate seeing the huge env diff)
+set -x DIRENV_LOG_FORMAT ""
+
 # direnv hook
 direnv hook fish | source
 
