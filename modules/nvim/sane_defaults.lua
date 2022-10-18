@@ -2,6 +2,10 @@ vim.o.mouse = "a"
 vim.o.cursorline = true
 vim.g.mapleader = " "
 
+-- allow cursor to go where there is no character.
+-- e.g. past the end of the line
+vim.o.virtualedit = "all"
+
 -- use system clipboard
 -- NOTE: for WSL win32yank.exe must been in the path and xclip must not be
 vim.o.clipboard = "unnamedplus"
