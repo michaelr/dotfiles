@@ -82,7 +82,7 @@ in
       };
 
       sessionCommands = ''
-        ${pkgs.xorg.xset}/bin/xset r rate 300 50
+        ${pkgs.xorg.xset}/bin/xset r rate 235 60
       '';
     };
 
