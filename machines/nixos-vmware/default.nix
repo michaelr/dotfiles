@@ -248,7 +248,6 @@ in
 
       file = {
         "${localBin}/git-wt-clone".source = localBinSrc + "/git-wt-clone";
-        "${localBin}/project-session".source = localBinSrc + "/project-session";
       };
 
       # i could do something like this: file = map { ".local/bin/${name}.source = ${path} + "/${name}"
