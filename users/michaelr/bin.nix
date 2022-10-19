@@ -57,7 +57,7 @@ in
     directory=$1
 
     mkdir -p $directory \
-        && tmux new -c $directory -s $directory -d \
+        && tmux new -c $directory -s $directory -d 'nvim' \
         && tmux switch -t $directory 
   '')
 
