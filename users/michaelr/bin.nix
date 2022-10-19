@@ -36,6 +36,8 @@ in
 
   # start a tmux session in a directory
   (writeShellScriptBin "project-session" ''
+    ${setDefaultBashAttrs}
+
      if [ $# -ne 1 ]; then
         echo "Error: Not enough arguments";
         echo "Usage: $(basename $0) <dir>";
@@ -49,4 +51,12 @@ in
         && tmux switch -t $directory 
   '')
 
+  # select project directory to open/start tmux session
+  (writeShellScriptBin "p" ''
+    ${setDefaultBashAttrs}
+
+    fd -H -td '^\.git$' -tf --search-path ~/code -x echo {//} | \
+      fzf | \
+      xargs project-session
+  '')
 ]
