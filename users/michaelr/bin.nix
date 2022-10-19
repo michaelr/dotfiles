@@ -55,7 +55,10 @@ in
     fi
 
     directory=$1
-    session=$(basename $directory)
+
+    # use basename as session name and remove
+    # any . chars because tmux can't use them
+    session=$(basename $directory | sed 's/\.//g')
 
     mkdir -p $directory \
         && tmux new -c $directory -s $session -d 'nvim' \
