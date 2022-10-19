@@ -3,6 +3,7 @@ let
   setDefaultBashAttrs = "set -eou pipefail";
 in
 [
+  # use a dev template
   (writeShellScriptBin "dvt" ''
     ${setDefaultBashAttrs}
 
@@ -17,6 +18,7 @@ in
     direnv allow 
   '')
 
+  # print available dev templates
   (writeShellScriptBin "dvts" ''
     ${setDefaultBashAttrs}
 
@@ -25,12 +27,14 @@ in
       jq '.templates | to_entries | .[] | .key + " - " + .value.description'
   '')
 
+  # print the name of the current monitor as used by xrandr
   (writeShellScriptBin "xrandr-print-output" ''
     ${setDefaultBashAttrs}
 
      xrandr | grep connected | grep -v disconnected | awk '{printf "%s", $1}'
   '')
 
+  # start a tmux session in a directory
   (writeShellScriptBin "project-session" ''
      if [ $# -ne 1 ]; then
         echo "Error: Not enough arguments";
