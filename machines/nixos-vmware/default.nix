@@ -487,7 +487,7 @@ in
         hr = "history --merge";
 
         # nix
-        dots = "cd ~/.dotfiles/ && tmux new -s dots 'nvim'";
+        dots = "project-session ~/.dotfiles";
         rebuild = "nixos-rebuild switch --use-remote-sudo --flake \"$HOME/.dotfiles\" -v";
         garbage = "sudo nix-collect-garbage -d";
         optimise = "sudo nix store optimise";
