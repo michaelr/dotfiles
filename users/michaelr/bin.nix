@@ -55,10 +55,11 @@ in
     fi
 
     directory=$1
+    session=$(basename $directory)
 
     mkdir -p $directory \
-        && tmux new -c $directory -s $directory -d 'nvim' \
-        && tmux switch -t $directory 
+        && tmux new -c $directory -s $session -d 'nvim' \
+        && tmux switch -t $session
   '')
 
   # select project directory to open/start tmux session
