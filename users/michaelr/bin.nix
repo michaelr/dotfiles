@@ -34,6 +34,16 @@ in
      xrandr | grep connected | grep -v disconnected | awk '{printf "%s", $1}'
   '')
 
+  # scale x session by zooming in
+  (writeShellScriptBin "x-scale-zoom" ''
+    xrandr --output $(xrandr-print-output) --scale 0.5
+  '')
+
+  # reset x scale to default
+  (writeShellScriptBin "x-scale-reset" ''
+    xrandr --output $(xrandr-print-output) --scale 1
+  '')
+
   # start a tmux session in a directory
   (writeShellScriptBin "project-session" ''
     ${setDefaultBashAttrs}

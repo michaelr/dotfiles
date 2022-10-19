@@ -492,10 +492,6 @@ in
         garbage = "sudo nix-collect-garbage -d";
         optimise = "sudo nix store optimise";
 
-        # xorg scaling
-        x-scale-zoom = "xrandr --output (xrandr-print-output) --scale 0.5";
-        x-scale-reset = "xrandr --output (xrandr-print-output) --scale 1";
-
         fly = "flyctl";
       };
 
