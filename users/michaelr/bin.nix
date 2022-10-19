@@ -59,7 +59,7 @@ in
 
     mkdir -p $directory \
         && tmux new -c $directory -s $session -d 'nvim' \
-        && tmux switch -t $session
+        && tmux attach -t $session
   '')
 
   # select project directory to open/start tmux session
