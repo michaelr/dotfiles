@@ -4,6 +4,7 @@ with lib;
 let
   defaultUser = "michaelr";
   userConf = ../../users + "/${defaultUser}";
+  imgsPath = ../../imgs;
   localBinSrc = userConf + "/local-bin";
   localBin = ".local/bin";
   readUserConfFile = f: builtins.readFile (userConf + "/${f}");
@@ -73,7 +74,7 @@ in
       defaultSession = "none+i3";
       lightdm = {
         enable = true;
-        background = "#282936";
+        # background = "#282936";
       };
       autoLogin = {
         enable = true;
@@ -247,6 +248,7 @@ in
       ] ++ bin;
 
       file = {
+        ".background-image".source = imgsPath + "/nixos-background-dracula.png";
         "${localBin}/git-wt-clone".source = localBinSrc + "/git-wt-clone";
       };
 
