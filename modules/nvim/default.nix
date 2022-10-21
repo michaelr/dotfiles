@@ -6,18 +6,18 @@ in
 {
   home.packages = with pkgs; [
     # C
-    gcc
+    # gcc
 
     # Clojure
     # clojure
 
     # elixir
-    elixir
+    # elixir
     #hex
     #rebar3
 
     # go
-    go
+    # go
 
     # Haskell
     # ghc
@@ -25,15 +25,15 @@ in
     # haskellPackages.stack
 
     # JavaScript
-    nodejs
-    yarn
-    nodePackages.eslint_d
-    nodePackages.prettier
-    nodePackages.typescript-language-server
-    nodePackages.typescript
+    # nodejs
+    # yarn
+    # nodePackages.eslint_d
+    # nodePackages.prettier
+    # nodePackages.typescript-language-server
+    # nodePackages.typescript
 
     # lua
-    lua
+    # lua
     sumneko-lua-language-server
 
     # markdown
