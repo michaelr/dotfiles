@@ -89,6 +89,9 @@ in
 
       neoformat
 
+      # build
+      vim-dispatch
+
       ## lsp
       nvim-lspconfig
       lspkind-nvim
