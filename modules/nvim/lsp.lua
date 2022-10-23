@@ -38,7 +38,15 @@ local on_attach = function(client, bufnr)
 
     if client.server_capabilities.documentFormattingProvider then
         require("lsp-format").on_attach(client, bufnr)
+    else
+        vim.cmd([[
+        augroup fmt
+            autocmd!
+            autocmd BufWritePre * undojoin | Neoformat
+        augroup END
+        ]])
     end
+
 end
 
 
@@ -129,7 +137,7 @@ require 'lspconfig'.tsserver.setup {
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
 
-        vim.cmd("autocmd BufWritePre <buffer> :Neoformat")
+        -- vim.cmd("autocmd BufWritePre <buffer> :Neoformat")
 
         -- local ts_utils = require("nvim-lsp-ts-utils")
         -- ts_utils.setup({
