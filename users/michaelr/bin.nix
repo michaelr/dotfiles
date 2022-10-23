@@ -60,9 +60,19 @@ in
     # any . chars because tmux can't use them
     session=$(basename $directory | sed 's/\.//g')
 
-    mkdir -p $directory \
-        && tmux new -c $directory -s $session -d 'nvim' \
-        && tmux attach -t $session
+
+    # create session if it doesn't exist
+    if ! tmux has-session -t "$session" 2> /dev/null; then
+      TMUX="" tmux new-session -c $directory -s "$session" -d 'nvim'
+    fi
+
+    # attach if outside tmux, switch if inside
+    if [[ -z "''${TMUX-}" ]]; then
+      tmux attach -t "$session"
+    else
+      tmux switch-client -t "$session"
+    fi
+
   '')
 
   # select project directory to open/start tmux session
