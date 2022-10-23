@@ -31,8 +31,9 @@ vim.o.showmode = false
 vim.o.backup = false
 vim.o.writebackup = false
 
--- " Try out cmdheight = 0
-vim.o.cmdheight = 0
+-- Would rather use cmdheight = 0 but as of now it's considered experimental
+-- and it causes unnecessary "Hit Enter" prompts
+vim.o.cmdheight = 1
 
 -- You will have bad experience for diagnostic messages when it's default 4000.
 vim.o.updatetime = 300
