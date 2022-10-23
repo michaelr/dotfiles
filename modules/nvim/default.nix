@@ -5,6 +5,10 @@ let
 in
 {
   home.packages = with pkgs; [
+
+    # for live syncing html, js, css to a browser
+    nodePackages.browser-sync
+
     # C
     # gcc
 
@@ -200,6 +204,7 @@ in
         ${builtins.readFile ./better_escape.lua}
         ${builtins.readFile ./git.lua}
         ${builtins.readFile ./lsp.lua}
+        ${builtins.readFile ./keymaps.lua}
         ${builtins.readFile ./nvim-tree.lua}
         ${builtins.readFile ./sane_defaults.lua}
         ${builtins.readFile ./snippets.lua}
