@@ -9,6 +9,9 @@ in
     # for live syncing html, js, css to a browser
     nodePackages.browser-sync
 
+    # formatting
+    nodePackages.prettier
+
     # C
     # gcc
 
@@ -32,7 +35,6 @@ in
     # nodejs
     # yarn
     # nodePackages.eslint_d
-    # nodePackages.prettier
     # nodePackages.typescript-language-server
     # nodePackages.typescript
 
