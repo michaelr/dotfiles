@@ -79,8 +79,9 @@ in
   (writeShellScriptBin "p" ''
     ${setDefaultBashAttrs}
 
-    fd -H -td '^\.git$' -tf --search-path ~/code -x echo {//} | \
-      fzf | \
-      xargs project-session
+      project-session $(\
+        fd -H -td '^\.git$' -tf --search-path ~/code -x echo {//} \
+        | fzf \
+      )
   '')
 ]
