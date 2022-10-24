@@ -32,11 +32,11 @@ in
     # haskellPackages.stack
 
     # JavaScript
-    # nodejs
-    # yarn
-    # nodePackages.eslint_d
-    # nodePackages.typescript-language-server
-    # nodePackages.typescript
+    nodejs
+    yarn
+    nodePackages.eslint_d
+    nodePackages.typescript-language-server
+    nodePackages.typescript
 
     # lua
     # lua
