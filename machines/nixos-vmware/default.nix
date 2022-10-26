@@ -206,7 +206,6 @@ in
 
         google-chrome
         rofi
-        wezterm
 
         mariadb
 
