@@ -163,6 +163,13 @@ in
         MANPAGER = "less -FirSwX";
       };
 
+      pointerCursor = {
+        package = pkgs.vanilla-dmz;
+        name = "Vanilla-DMZ";
+        size = 128;
+        x11.enable = true;
+      };
+
       packages = with pkgs; [
         mpv
         pavucontrol
