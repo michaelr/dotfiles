@@ -104,6 +104,7 @@ in
       lsp_signature-nvim
       null-ls-nvim
       nvim-lsp-ts-utils
+      lspsaga-nvim
 
       #vimPlugsFromSource.nvim-treesitter
       nvim-treesitter
@@ -205,8 +206,9 @@ in
         ${builtins.readFile ./auto-session.lua}
         ${builtins.readFile ./better_escape.lua}
         ${builtins.readFile ./git.lua}
-        ${builtins.readFile ./lsp.lua}
         ${builtins.readFile ./keymaps.lua}
+        ${builtins.readFile ./lsp.lua}
+        ${builtins.readFile ./lspsaga.lua}
         ${builtins.readFile ./nvim-tree.lua}
         ${builtins.readFile ./sane_defaults.lua}
         ${builtins.readFile ./snippets.lua}
