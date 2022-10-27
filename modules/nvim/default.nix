@@ -91,7 +91,7 @@ in
       vim-tmux-navigator
 
       # Programming
-      which-key-nvim
+      # which-key-nvim
       vim-nix # vimscript
 
       neoformat
@@ -220,12 +220,12 @@ in
         ${builtins.readFile ./todo.lua}
         ${builtins.readFile ./toggleterm.lua}
         ${builtins.readFile ./treesitter.lua}
-        ${builtins.readFile ./which_key.lua}
 
       EOF
 
       ${builtins.readFile ./theme.vim}
       ${builtins.readFile ./indentline.vim}
     '';
+    # ${builtins.readFile ./which_key.lua}
   };
 }
