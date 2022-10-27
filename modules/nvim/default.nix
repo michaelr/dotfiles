@@ -205,6 +205,9 @@ in
 
         }
 
+        -- this needs to be at the beginning
+        ${builtins.readFile ./sane_defaults.lua}
+
         ${builtins.readFile ./auto-session.lua}
         ${builtins.readFile ./better_escape.lua}
         ${builtins.readFile ./git.lua}
@@ -212,7 +215,6 @@ in
         ${builtins.readFile ./lsp.lua}
         ${builtins.readFile ./lspsaga.lua}
         ${builtins.readFile ./nvim-tree.lua}
-        ${builtins.readFile ./sane_defaults.lua}
         ${builtins.readFile ./snippets.lua}
         ${builtins.readFile ./statusline.lua}
         ${builtins.readFile ./tabs.lua}
