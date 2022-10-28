@@ -204,7 +204,6 @@ in
 
         exercism # coding exercises
 
-        google-chrome
         rofi
 
         mariadb
