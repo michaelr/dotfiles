@@ -524,6 +524,26 @@ in
       shellInit = readUserConfFile "shell-init.fish";
     };
 
+    # mail
+    programs.notmuch = {
+      enable = true;
+      new.tags = [ "new" ];
+      search.excludeTags = [ "trash" "spam" ];
+    };
+    programs.lieer.enable = true;
+    services.lieer.enable = true;
+
+    accounts.email.accounts.gmail-michael = {
+      primary = true;
+      flavor = "gmail.com";
+      realName = "Michael Reddick";
+      userName = "michael.reddick@gmail.com";
+      address = "michael.reddick@gmail.com";
+      notmuch.enable = true;
+      lieer.enable = true;
+      lieer.sync.enable = true;
+    };
+
   };
 
   # Install manpages and other documentation.
