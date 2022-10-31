@@ -111,8 +111,10 @@ in
 
   virtualisation.vmware.guest.enable = true;
 
+  # timedatectl list-timezones
+  time.timeZone = "America/Bogota";
   # time.timeZone = "America/Chicago";
-  time.timeZone = "America/Denver";
+  # time.timeZone = "America/Denver";
 
   users.mutableUsers = false;
   users.groups.plocate = { };
