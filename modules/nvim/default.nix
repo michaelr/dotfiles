@@ -78,8 +78,11 @@ in
       nvim-tree-lua
       nvim-web-devicons
       lualine-nvim
+
+      # themes
       dracula-vim
       nightfox-nvim
+      catppuccin-nvim
 
       # sessions
       auto-session
@@ -179,7 +182,10 @@ in
       ${builtins.readFile ./dadbod.vim}
 
       " colorscheme ${colorscheme.vim-name}
-      colorscheme nightfox
+      " colorscheme nightfox
+      " colorscheme dawnfox
+      " colorscheme dawnfox
+      colorscheme catppuccin-latte
 
       lua << EOF
         local statusline_theme = '${colorscheme.vim-statusline}'
