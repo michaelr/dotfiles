@@ -180,7 +180,6 @@ in
       " colorscheme ${colorscheme.vim-name}
       " colorscheme nightfox
       " colorscheme dawnfox
-      " colorscheme dawnfox
       colorscheme catppuccin-latte
 
       lua << EOF
@@ -199,7 +198,7 @@ in
           yamlls = {"${pkgs.nodePackages.yaml-language-server}/bin/yaml-language-server", "--stdio"},
           dls = "${pkgs.nodePackages.diagnostic-languageserver}/bin/diagnostic-languageserver",
           isort = "${pkgs.python3Packages.isort}/bin/isort",
-          lua_format = "${pkgs.luaformatter}/bin/lua-format", 
+          lua_format = "${pkgs.luaformatter}/bin/lua-format",
           elixirls = {"${pkgs.elixir_ls}/bin/elixir-ls"},
           eslint_d_bin = "${pkgs.nodePackages.eslint_d}/bin/eslint_d",
           tailwindcss = {"${pkgs.nodePackages."@tailwindcss/language-server"}/bin/tailwindcss-language-server", "--stdio" },
