@@ -534,6 +534,17 @@ in
       enable = true;
       vimKeys = true;
     };
+    programs.alot = {
+      enable = true;
+      settings = {
+        colourmode = 1;
+      };
+      hooks = ''
+        def pre_buffer_focus(ui, dbm, buf):
+          if buf.modename == 'search':
+              buf.rebuild()
+      '';
+    };
     programs.lieer.enable = true;
     services.lieer.enable = true;
 
