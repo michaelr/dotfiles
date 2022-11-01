@@ -530,6 +530,10 @@ in
       new.tags = [ "new" ];
       search.excludeTags = [ "trash" "spam" ];
     };
+    programs.neomutt = {
+      enable = true;
+      vimKeys = true;
+    };
     programs.lieer.enable = true;
     services.lieer.enable = true;
 
@@ -540,8 +544,11 @@ in
       userName = "michael.reddick@gmail.com";
       address = "michael.reddick@gmail.com";
       notmuch.enable = true;
+      neomutt.enable = true;
       lieer.enable = true;
       lieer.sync.enable = true;
+      passwordCommand = "";
+      folders.inbox = "mail";
     };
 
   };
