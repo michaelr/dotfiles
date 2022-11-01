@@ -73,6 +73,7 @@ in
       nvim-tree-lua
       nvim-web-devicons
       lualine-nvim
+      vim-better-whitespace
 
       # themes
       dracula-vim
