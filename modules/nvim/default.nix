@@ -26,11 +26,6 @@ in
     # go
     # go
 
-    # Haskell
-    # ghc
-    # haskellPackages.cabal-install
-    # haskellPackages.stack
-
     # JavaScript
     nodejs
     yarn
@@ -195,7 +190,6 @@ in
           cssls = {"${pkgs.nodePackages.vscode-css-languageserver-bin}/bin/css-languageserver", "--stdio"},
           dockerls = {"${pkgs.nodePackages.dockerfile-language-server-nodejs}/bin/docker-langserver", "--stdio"},
           gopls = {"${pkgs.gopls}/bin/gopls"},
-          hls = {"${pkgs.haskellPackages.haskell-language-server}/bin/haskell-language-server", "--lsp"},
           html = {"${pkgs.nodePackages.vscode-html-languageserver-bin}/bin/html-languageserver", "--stdio"},
           jsonls = {"${pkgs.nodePackages.vscode-json-languageserver-bin}/bin/json-languageserver", "--stdio"},
           rnix = {"${pkgs.rnix-lsp}/bin/rnix-lsp"},
