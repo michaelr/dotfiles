@@ -130,6 +130,7 @@ in
   environment.systemPackages = with pkgs; [
     tailscale
     gnumake
+    gcc
     lsof
     killall
     rxvt-unicode-unwrapped
