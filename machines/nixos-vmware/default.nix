@@ -377,7 +377,8 @@ in
 
     programs.kitty = {
       enable = true;
-      theme = "Catppuccin-Latte";
+      #theme = "Catppuccin-Latte";
+      theme = "Catppuccin-Mocha";
       extraConfig = readUserConfFile "kitty";
     };
 

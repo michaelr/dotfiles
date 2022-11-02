@@ -180,7 +180,8 @@ in
       " colorscheme ${colorscheme.vim-name}
       " colorscheme nightfox
       " colorscheme dawnfox
-      colorscheme catppuccin-latte
+      " colorscheme catppuccin-latte
+      colorscheme catppuccin-mocha
 
       lua << EOF
         local statusline_theme = '${colorscheme.vim-statusline}'
