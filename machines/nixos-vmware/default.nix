@@ -199,6 +199,7 @@ in
         gitlab-runner
         kubernetes-helm
         unzip
+        w3m
 
         flyctl # fly.io
         hcloud # hetzner cli
@@ -257,6 +258,8 @@ in
       file = {
         ".background-image".source = imgsPath + "/nixos-background-dracula.png";
         "${localBin}/git-wt-clone".source = localBinSrc + "/git-wt-clone";
+        # for viewing html emails
+        ".mailcap".text = "text/html;  w3m -dump -o document_charset=%{charset} -o display_link_number=1 '%s'; nametemplate=%s.html; copiousoutput";
       };
 
       # i could do something like this: file = map { ".local/bin/${name}.source = ${path} + "/${name}"
@@ -542,8 +545,8 @@ in
       };
       hooks = ''
         def pre_buffer_focus(ui, dbm, buf):
-          if buf.modename == 'search':
-              buf.rebuild()
+        if buf.modename == 'search':
+        buf.rebuild()
       '';
     };
     programs.lieer.enable = true;
@@ -576,4 +579,7 @@ in
   security.sudo.wheelNeedsPassword = false;
 
 }
+
+
+
 
