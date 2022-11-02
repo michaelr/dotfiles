@@ -15,7 +15,7 @@ in
     fi
 
     nix flake init -t "github:michaelr/my-dev-templates#$1"
-    direnv allow 
+    direnv allow
   '')
 
   # print available dev templates
