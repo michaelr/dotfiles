@@ -548,8 +548,17 @@ in
     programs.alot = {
       enable = true;
       settings = {
-        colourmode = 1;
+        colourmode = 256;
       };
+      bindings = {
+        global = {
+          T = "search from:michael.reddick@gmail.com to:michael.reddick@gmail.com is:unread";
+        };
+        thread = {
+          O = "pipeto --format=filepath send-mail-to-obsidian";
+        };
+      };
+
       hooks = ''
         def pre_buffer_focus(ui, dbm, buf):
         if buf.modename == 'search':
