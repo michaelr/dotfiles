@@ -84,4 +84,14 @@ in
         | fzf \
       )
   '')
+
+  (writeShellScriptBin "send-mail-to-obsidian" ''
+    ${setDefaultBashAttrs}
+
+    message_path=$(</dev/stdin)
+    obsidian_file="/home/michaelr/code/personal/mrkdwn/inbox/TMFMInbox.md"
+    parsed_mail=$(echo $message_path | parse-to-me-from-me-mail)
+
+    echo "$parsed_mail" >> "$obsidian_file"
+  '')
 ]
