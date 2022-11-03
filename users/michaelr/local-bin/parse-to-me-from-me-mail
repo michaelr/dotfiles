@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# depends on procmail and mu packages
+#
+# for use with pipeout command in alot mail client
+
+set -eou pipefail
+
+message_path=$(</dev/stdin)
+
+# create tmpdir and setup trap to delete it
+tmpdir="$(mktemp -d)"
+if [[ ! "$tmpdir" || ! -d "$tmpdir" ]]; then
+  echo "Could not create temp dir"
+  exit 1
+fi
+trap 'rm -rf -- "$tmpdir"' EXIT
+
+
+mu extract --parts=1 $message_path --target-dir=$tmpdir
+body=$(cat $tmpdir/part-1)
+
+subject=$(cat $message_path \
+    | formail -x Subject \
+    `# remove beginning whitespace` \
+    | sed -e 's/^\s*//' \
+    `# replace newlines with spaces` \
+    | sed -z 's/\n/ /g' \
+    `# remove trailing whitespace` \
+    | sed -e 's/\s*$//')
+
+echo "-----"
+# if body doesn't contain subect, then add it
+if ! [[ $body =~ "$subject" ]]; then
+    echo "$subject"
+    echo "====="
+fi
+echo "$body"
+

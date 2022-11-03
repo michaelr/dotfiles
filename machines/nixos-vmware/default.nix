@@ -254,11 +254,17 @@ in
 
         discord
         weechat
+
+        # for parse-to-me-from-me-mail script
+        mu
+        procmail
+
       ] ++ bin;
 
       file = {
         ".background-image".source = imgsPath + "/nixos-background-dracula.png";
         "${localBin}/git-wt-clone".source = localBinSrc + "/git-wt-clone";
+        "${localBin}/parse-to-me-from-me-mail".source = localBinSrc + "/parse-to-me-from-me-mail";
         # for viewing html emails
         ".mailcap".text = "text/html;  w3m -dump -o document_charset=%{charset} -o display_link_number=1 '%s'; nametemplate=%s.html; copiousoutput";
       };
