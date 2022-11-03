@@ -79,10 +79,10 @@ in
   (writeShellScriptBin "p" ''
     ${setDefaultBashAttrs}
 
-      project-session $(\
-        fd -H -td '^\.git$' -tf --search-path ~/code -x echo {//} \
-        | fzf \
-      )
+    project-session $(\
+      fd -H -td '^\.git$' -tf --search-path ~/code -x echo {//} \
+      | fzf \
+    )
   '')
 
   (writeShellScriptBin "send-mail-to-obsidian" ''
