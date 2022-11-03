@@ -29,11 +29,14 @@ subject=$(cat $message_path \
     `# remove trailing whitespace` \
     | sed -e 's/\s*$//')
 
+
+# remove $subject from $body if it exists
+body=${body/$subject/}
+
+# remove leading whitespace from body
+body=$(echo "$body" | sed '/\S/,$!d')
+
 echo "-----"
-# if body doesn't contain subect, then add it
-if ! [[ $body =~ "$subject" ]]; then
-    echo "$subject"
-    echo "====="
-fi
+echo "$subject"
 echo "$body"
 
