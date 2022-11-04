@@ -210,8 +210,6 @@ in
 
         rofi
 
-        mariadb
-
         obsidian
         _1password-gui
         _1password
