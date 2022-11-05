@@ -174,9 +174,8 @@ in
       };
 
       packages = with pkgs; [
-        mpv
-        pavucontrol
 
+        # command line utils
         ripgrep
         fzf
         jq
@@ -186,48 +185,22 @@ in
         mdcat # kitty md previewer with images
         termpdfpy # kitty pdf, epub terminal viewer
         docker-compose
-        google-cloud-sdk
-        cloud-sql-proxy
         mosh
         autossh
         nodePackages.sql-formatter
         fx # json viewer
-        kubectl
         envsubst
         wget
         socat
         pup # command line html parser
-        gitlab-runner
-        kubernetes-helm
         unzip
         w3m
-
-        flyctl # fly.io
-        hcloud # hetzner cli
-        glab # gitlab cli
-
-        exercism # coding exercises
-
-        rofi
-
-        obsidian
-        _1password-gui
-        _1password
         gopass
         age
-
-        libnotify
-        dunst
-
         htop
         bottom
-
         tmatrix # l33t factor 5000
         yt-dlp # multimedia archiver
-        ffmpeg
-        vlc
-        volumeicon
-
         duf
         du-dust
         pgcli
@@ -241,21 +214,40 @@ in
         ctop
         angle-grinder
         lnav
-
         open-vm-tools
-
-        i3wsr # i3 workspace renamer
-
         ncspot
         spotdl
         downonspot
+        mu # for parse-to-me-from-me-mail script
+        procmail #ditto
 
+
+        # cloud
+        google-cloud-sdk
+        cloud-sql-proxy
+        flyctl # fly.io
+        hcloud # hetzner cli
+        glab # gitlab cli
+
+        # coding
+        exercism # coding exercises
+
+        # desktop
+        mpv
+        pavucontrol
+        rofi # app runner
+        obsidian
+        _1password-gui
+        _1password
+        libnotify
+        dunst
+        ffmpeg
+        vlc
+        volumeicon
+        i3wsr # i3 workspace renamer
         discord
         weechat
 
-        # for parse-to-me-from-me-mail script
-        mu
-        procmail
 
       ] ++ bin;
 
