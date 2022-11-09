@@ -139,6 +139,7 @@ in
 
       # Fuzzy Finder
       telescope-nvim
+      telescope-manix
 
       # Text Helpers
       todo-comments-nvim

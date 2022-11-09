@@ -220,6 +220,7 @@ in
         downonspot
         mu # for parse-to-me-from-me-mail script
         procmail #ditto
+        manix # nix doc searcher
 
 
         # cloud
