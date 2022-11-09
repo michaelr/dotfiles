@@ -122,6 +122,7 @@ in
       cmp-treesitter
       luasnip # for cmp
       cmp_luasnip
+      nvim-autopairs
 
       # Snippets
       friendly-snippets
@@ -211,6 +212,7 @@ in
         -- this needs to be at the beginning
         ${builtins.readFile ./sane_defaults.lua}
 
+        ${builtins.readFile ./autopair.lua}
         ${builtins.readFile ./auto-session.lua}
         ${builtins.readFile ./better_escape.lua}
         ${builtins.readFile ./git.lua}
