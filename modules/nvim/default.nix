@@ -135,6 +135,7 @@ in
 
       # Git
       gitsigns-nvim
+      git-blame-nvim
 
       # DAP
       #vimPlugsFromSource.nvim-dap-python
@@ -179,6 +180,7 @@ in
       ${builtins.readFile ./vim-tmux-navigator.vim}
       ${builtins.readFile ./folding.vim}
       ${builtins.readFile ./dadbod.vim}
+      ${builtins.readFile ./gitblame.vim}
 
       " colorscheme ${colorscheme.vim-name}
       " colorscheme nightfox

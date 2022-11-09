@@ -4,6 +4,8 @@ keymap('', '<F6>', '<cmd>Dispatch browser-sync start --server --files "*.js, *.h
 keymap('', '<F7>', '<cmd>Dispatch npm run dev<CR>')
 keymap({ 'n', 'v', }, '<leader>e', '<cmd>NvimTreeToggle<cr>')
 keymap({ 'n', 'v', }, "<leader>bd", "<cmd>bd<CR>")
+keymap({ 'n', 'v', }, "<leader>gbt", "<cmd>GitBlameToggle<CR>")
+keymap({ 'n', 'v', }, "<leader>gbu", "<cmd>GitBlameOpenCommitURL<CR>")
 keymap('', "<leader>sb", "<cmd>Telescope buffers<CR>")
 keymap('', "<leader>sc", "<cmd>Telescope command_history<CR>")
 keymap('', "<leader>sC", "<cmd>Telescope commands<CR>")
