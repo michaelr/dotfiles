@@ -6,6 +6,9 @@ require 'nvim-treesitter.configs'.setup {
     --     "nix", "perl", "python", "regex", "ruby", "scss", "sql", "toml",
     --     "tsx", "typescript", "vim", "yaml"
     -- },
+    autotag = {
+        enable = true,
+    },
     highlight = {
         enable = true,
     },

@@ -111,6 +111,7 @@ in
       nvim-treesitter-refactor
       nvim-treesitter-textobjects
       nvim-treesitter-context
+      nvim-ts-autotag # auto close html tags with treesitter
 
       ## Autocompletion setup
       nvim-cmp
