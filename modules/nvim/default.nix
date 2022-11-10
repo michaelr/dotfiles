@@ -168,6 +168,7 @@ in
 
       # fast motion
       vimPlugsFromSource.nvim-pounce
+      vimPlugsFromSource.nvim-delaytrain
 
       # formatting
       lsp-format-nvim
@@ -216,6 +217,7 @@ in
         ${builtins.readFile ./autopair.lua}
         ${builtins.readFile ./auto-session.lua}
         ${builtins.readFile ./better_escape.lua}
+        ${builtins.readFile ./delaytrain.lua}
         ${builtins.readFile ./git.lua}
         ${builtins.readFile ./gitblame.lua}
         ${builtins.readFile ./keymaps.lua}

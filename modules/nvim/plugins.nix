@@ -47,4 +47,16 @@
       sha256 = "sha256-tg2zplVKfbNLKCYTmhvJfc0GEh6u1e2T3kgG/ju3PGA==";
     };
   };
+
+  nvim-delaytrain = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "nvim-delaytrain";
+    version = "2022-11-10";
+    src = pkgs.fetchFromGitHub {
+      owner = "ja-ford";
+      repo = "delaytrain.nvim";
+      rev = "f22db9e58d9f839aff0208766a0734c4794e5a68";
+      #sha256 = pkgs.lib.fakeSha256;
+      sha256 = "sha256-mQQf39UoZV/A/pAIdyCSiI7WZ7Kc3V4ZvOJhMgxlHUQ=";
+    };
+  };
 }
