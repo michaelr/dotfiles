@@ -24,4 +24,15 @@
     };
   };
 
+  vim-venter = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "vim-venter";
+    version = "2022-11-10";
+    src = pkgs.fetchFromGitHub {
+      owner = "JMcKiern";
+      repo = "vim-venter";
+      rev = "8cbb93f912a85e320a3eaeee0b9ee5934043930a";
+      #sha256 = pkgs.lib.fakeSha256;
+      sha256 = "sha256-mwOaGrgyvTCC3TnoATq65YqcQRipVOkYAlbobT1oVIo=";
+    };
+  };
 }

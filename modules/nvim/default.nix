@@ -74,6 +74,7 @@ in
       nvim-web-devicons
       lualine-nvim
       vim-better-whitespace
+      vimPlugsFromSource.vim-venter
 
       # themes
       dracula-vim
