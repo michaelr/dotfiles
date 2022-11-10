@@ -167,7 +167,7 @@ in
       vim-dadbod-completion
 
       # fast motion
-      lightspeed-nvim
+      vimPlugsFromSource.nvim-pounce
 
       # formatting
       lsp-format-nvim

@@ -35,4 +35,16 @@
       sha256 = "sha256-mwOaGrgyvTCC3TnoATq65YqcQRipVOkYAlbobT1oVIo=";
     };
   };
+
+  nvim-pounce = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "nvim-pounce";
+    version = "2022-11-10";
+    src = pkgs.fetchFromGitHub {
+      owner = "rlane";
+      repo = "pounce.nvim";
+      rev = "a573820b20882c70d241a1ac94aa27670442c027";
+      #sha256 = pkgs.lib.fakeSha256;
+      sha256 = "sha256-tg2zplVKfbNLKCYTmhvJfc0GEh6u1e2T3kgG/ju3PGA==";
+    };
+  };
 }

@@ -30,3 +30,7 @@ keymap('', "<M-h>", "<cmd>TmuxNavigateLeft<CR>")
 keymap('', "<M-j>", "<cmd>TmuxNavigateDown<CR>")
 keymap('', "<M-k>", "<cmd>TmuxNavigateUp<CR>")
 keymap('', "<M-l>", "<cmd>TmuxNavigateRight<CR>")
+
+-- pounce (motion)
+keymap({ 'n', 'v' }, "s", "<cmd>Pounce<CR>")
+keymap({ 'n', 'v' }, "S", "<cmd>PounceRepeat<CR>")
