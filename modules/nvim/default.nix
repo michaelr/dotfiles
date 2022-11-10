@@ -180,7 +180,6 @@ in
       ${builtins.readFile ./vim-tmux-navigator.vim}
       ${builtins.readFile ./folding.vim}
       ${builtins.readFile ./dadbod.vim}
-      ${builtins.readFile ./gitblame.vim}
 
       " colorscheme ${colorscheme.vim-name}
       " colorscheme nightfox
@@ -218,6 +217,7 @@ in
         ${builtins.readFile ./auto-session.lua}
         ${builtins.readFile ./better_escape.lua}
         ${builtins.readFile ./git.lua}
+        ${builtins.readFile ./gitblame.lua}
         ${builtins.readFile ./keymaps.lua}
         ${builtins.readFile ./lsp.lua}
         ${builtins.readFile ./lspsaga.lua}
@@ -230,10 +230,11 @@ in
         ${builtins.readFile ./toggleterm.lua}
         ${builtins.readFile ./treesitter.lua}
 
+        ${builtins.readFile ./indentline.lua}
+
       EOF
 
       ${builtins.readFile ./theme.vim}
-      ${builtins.readFile ./indentline.vim}
     '';
     # ${builtins.readFile ./which_key.lua}
   };
