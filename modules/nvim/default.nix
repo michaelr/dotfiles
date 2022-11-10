@@ -177,7 +177,6 @@ in
     extraConfig = ''
       ${builtins.readFile ./sane_defaults.vim}
       ${builtins.readFile ./vim-test.vim}
-      ${builtins.readFile ./vim-tmux-navigator.vim}
       ${builtins.readFile ./folding.vim}
       ${builtins.readFile ./dadbod.vim}
 
@@ -226,6 +225,7 @@ in
         ${builtins.readFile ./statusline.lua}
         ${builtins.readFile ./tabs.lua}
         ${builtins.readFile ./telescope.lua}
+        ${builtins.readFile ./vim-tmux-navigator.lua}
         ${builtins.readFile ./todo.lua}
         ${builtins.readFile ./toggleterm.lua}
         ${builtins.readFile ./treesitter.lua}

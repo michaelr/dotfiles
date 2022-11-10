@@ -2,10 +2,17 @@ local keymap = vim.keymap.set
 
 keymap('', '<F6>', '<cmd>Dispatch browser-sync start --server --files "*.js, *.html, *.css"<CR>')
 keymap('', '<F7>', '<cmd>Dispatch npm run dev<CR>')
+
 keymap({ 'n', 'v', }, '<leader>e', '<cmd>NvimTreeToggle<cr>')
+
+-- buffers
 keymap({ 'n', 'v', }, "<leader>bd", "<cmd>bd<CR>")
+
+-- git
 keymap({ 'n', 'v', }, "<leader>gbt", "<cmd>GitBlameToggle<CR>")
 keymap({ 'n', 'v', }, "<leader>gbu", "<cmd>GitBlameOpenCommitURL<CR>")
+
+-- telescope
 keymap('', "<leader>sb", "<cmd>Telescope buffers<CR>")
 keymap('', "<leader>sc", "<cmd>Telescope command_history<CR>")
 keymap('', "<leader>sC", "<cmd>Telescope commands<CR>")
@@ -17,3 +24,9 @@ keymap('', "<leader>sn", "<cmd>Telescope manix<CR>")
 keymap('', "<leader>sr", "<cmd>Telescope registers<CR>")
 keymap('', "<leader>st", "<cmd>Telescope live_grep<CR>")
 keymap('', "<leader>sT", "<cmd>TodoTelescope<CR>")
+
+-- tmux
+keymap('', "<M-h>", "<cmd>TmuxNavigateLeft<CR>")
+keymap('', "<M-j>", "<cmd>TmuxNavigateDown<CR>")
+keymap('', "<M-k>", "<cmd>TmuxNavigateUp<CR>")
+keymap('', "<M-l>", "<cmd>TmuxNavigateRight<CR>")
