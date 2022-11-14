@@ -59,4 +59,16 @@
       sha256 = "sha256-mQQf39UoZV/A/pAIdyCSiI7WZ7Kc3V4ZvOJhMgxlHUQ=";
     };
   };
+
+  nvim-grapple = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "nvim-grapple";
+    version = "2022-11-11";
+    src = pkgs.fetchFromGitHub {
+      owner = "cbochs";
+      repo = "grapple.nvim";
+      rev = "218a58bff8a91b1959cbab670b96a78dca64738a";
+      #sha256 = pkgs.lib.fakeSha256;
+      sha256 = "sha256-ZvPGcwXWth3/+Rq9ewcreq/ODz3Rk7wH17ZRZkUPTs4=";
+    };
+  };
 }

@@ -170,6 +170,7 @@ in
       # fast motion
       vimPlugsFromSource.nvim-pounce
       vimPlugsFromSource.nvim-delaytrain
+      vimPlugsFromSource.nvim-grapple
 
       # formatting
       lsp-format-nvim
@@ -221,6 +222,7 @@ in
         ${builtins.readFile ./delaytrain.lua}
         ${builtins.readFile ./git.lua}
         ${builtins.readFile ./gitblame.lua}
+        ${builtins.readFile ./grapple.lua}
         ${builtins.readFile ./keymaps.lua}
         ${builtins.readFile ./lsp.lua}
         ${builtins.readFile ./lspsaga.lua}
