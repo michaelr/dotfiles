@@ -75,6 +75,7 @@ in
       lualine-nvim
       vim-better-whitespace
       vimPlugsFromSource.vim-venter
+      zen-mode-nvim
 
       # themes
       dracula-vim
@@ -232,6 +233,7 @@ in
         ${builtins.readFile ./todo.lua}
         ${builtins.readFile ./toggleterm.lua}
         ${builtins.readFile ./treesitter.lua}
+        ${builtins.readFile ./zen-mode.lua}
 
         ${builtins.readFile ./indentline.lua}
 

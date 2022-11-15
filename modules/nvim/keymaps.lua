@@ -34,3 +34,6 @@ keymap('', "<M-l>", "<cmd>TmuxNavigateRight<CR>")
 -- pounce (motion)
 keymap({ 'n', 'v' }, "s", "<cmd>Pounce<CR>")
 keymap({ 'n', 'v' }, "S", "<cmd>PounceRepeat<CR>")
+
+-- zenmode
+keymap('', "<M-z>", "<cmd>ZenMode<CR>")
