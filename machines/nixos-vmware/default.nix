@@ -222,6 +222,7 @@ in
         mu # for parse-to-me-from-me-mail script
         procmail #ditto
         manix # nix doc searcher
+        libgen-cli
 
 
         # cloud
