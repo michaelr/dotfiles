@@ -66,9 +66,9 @@
     src = pkgs.fetchFromGitHub {
       owner = "cbochs";
       repo = "grapple.nvim";
-      rev = "218a58bff8a91b1959cbab670b96a78dca64738a";
+      rev = "50ce2f62c8e4e895bbd070a2c14c1d62370847a7";
       #sha256 = pkgs.lib.fakeSha256;
-      sha256 = "sha256-ZvPGcwXWth3/+Rq9ewcreq/ODz3Rk7wH17ZRZkUPTs4=";
+      sha256 = "sha256-nd270dXTr+a9mU0LDH0TTYx1iPQCuXvquZX300hPtHo=";
     };
   };
 }
