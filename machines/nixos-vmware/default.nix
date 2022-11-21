@@ -294,7 +294,7 @@ in
         "browser.fullscreen.autohide" = false;
 
         # Use dark mode in interfaces and websites.
-        "browser.in-content.dark-mode" = false;
+        "browser.in-content.dark-mode" = true;
 
         # Remove the highlights from the new tab page.
         "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
@@ -315,7 +315,7 @@ in
         "ui.key.menuAccessKeyFocuses" = false;
 
         # Set the system UI to dark themed.
-        "ui.systemUsesDarkTheme" = 0;
+        "ui.systemUsesDarkTheme" = 1;
 
         # Don't reveal your internal IP when WebRTC is enabled
         "media.peerconnection.ice.no_host" = false;
