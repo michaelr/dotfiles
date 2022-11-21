@@ -37,3 +37,7 @@ keymap({ 'n', 'v' }, "S", "<cmd>PounceRepeat<CR>")
 
 -- zenmode
 keymap('', "<M-z>", "<cmd>ZenMode<CR>")
+
+-- grapple
+keymap('', "<M-g>", "<cmd>GrapplePopup tags<CR>")
+keymap('', "<M-t>", "<cmd>GrappleToggle<CR>")
