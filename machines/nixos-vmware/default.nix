@@ -114,8 +114,9 @@ in
 
   # timedatectl list-timezones
   # time.timeZone = "America/Bogota";
-  #time.timeZone = "America/Denver";
-  time.timeZone = "America/Chicago";
+  # time.timeZone = "America/Denver";
+  # time.timeZone = "America/Chicago";
+  services.automatic-timezoned.enable = true;
 
   users.mutableUsers = false;
   users.groups.plocate = { };
