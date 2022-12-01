@@ -249,8 +249,6 @@ in
         volumeicon
         i3wsr # i3 workspace renamer
         discord
-        weechat
-
 
       ] ++ bin;
 
