@@ -401,6 +401,7 @@ in
             {
               block = "pomodoro";
               # uncomment when version >= 0.30
+              # see https://greshake.github.io/i3status-rust/i3status_rs/blocks/index.html
               # notify_cmd = "notify-send '{msg}'";
               notifier = "notifysend";
               length = 25;
