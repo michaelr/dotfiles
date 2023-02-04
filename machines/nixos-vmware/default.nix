@@ -399,6 +399,13 @@ in
               show_marks = "visible";
             }
             {
+              block = "pomodoro";
+              # uncomment when version >= 0.30
+              # notify_cmd = "notify-send '{msg}'";
+              notifier = "notifysend";
+              length = 25;
+            }
+            {
               block = "docker";
               format = "{running}/{total}";
             }
