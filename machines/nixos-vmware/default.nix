@@ -279,7 +279,7 @@ in
 
     programs.firefox = {
       enable = true;
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      profiles.default.extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
         multi-account-containers
         old-reddit-redirect
