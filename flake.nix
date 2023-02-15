@@ -8,7 +8,6 @@
     nur.url = "github:nix-community/NUR";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    neovim-nightly-overlay.inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
 
     fish-theme-bobthefish = {
       url = github:oh-my-fish/theme-bobthefish;
