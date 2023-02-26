@@ -184,6 +184,11 @@ in
       ${builtins.readFile ./folding.vim}
       ${builtins.readFile ./dadbod.vim}
 
+      " temporary fix - https://github.com/catppuccin/nvim/pull/414
+      lua << CATEOF
+        require("catppuccin").setup()
+      CATEOF
+
       " colorscheme ${colorscheme.vim-name}
       " colorscheme nightfox
       " colorscheme dawnfox
