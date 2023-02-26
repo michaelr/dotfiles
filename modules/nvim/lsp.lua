@@ -46,7 +46,6 @@ local on_attach = function(client, bufnr)
         augroup END
         ]])
     end
-
 end
 
 
@@ -100,7 +99,7 @@ require 'lspconfig'.jsonls.setup {
 }
 
 -- lua
-require 'lspconfig'.sumneko_lua.setup {
+require 'lspconfig'.lua_ls.setup {
     cmd = { "lua-language-server" },
     capabilities = capabilities,
     on_attach = on_attach,
@@ -208,7 +207,7 @@ cmp.setup({
         })
     },
     mapping = {
-        ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+        ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs( -4), { 'i', 'c' }),
         ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
         ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         -- If you want to remove the default `<C-y>` mapping, You can specify
@@ -228,7 +227,7 @@ cmp.setup({
         { name = 'treesitter' },
         { name = 'path' },
         { name = 'luasnip' },
-        { name = 'buffer', keyword_length = 3 },
+        { name = 'buffer',    keyword_length = 3 },
     }
 })
 
