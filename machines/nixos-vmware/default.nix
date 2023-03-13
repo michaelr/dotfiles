@@ -108,7 +108,7 @@ in
     PermitRootLogin = "no";
   };
 
-  services.tailscale.enable = true;
+  services.tailscale.enable = false;
 
   networking.firewall.enable = false;
 
