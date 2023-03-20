@@ -403,7 +403,7 @@ in
             }
             {
               block = "docker";
-              format = "{running}/{total}";
+              format = " $icon $running/$total ";
             }
             {
               block = "disk_space";
