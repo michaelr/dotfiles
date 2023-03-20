@@ -396,15 +396,10 @@ in
           blocks = [
             {
               block = "focused_window";
-              show_marks = "visible";
             }
             {
               block = "pomodoro";
-              # uncomment when version >= 0.30
-              # see https://greshake.github.io/i3status-rust/i3status_rs/blocks/index.html
-              # notify_cmd = "notify-send '{msg}'";
-              notifier = "notifysend";
-              length = 25;
+              notify_cmd = "notify-send '{msg}'";
             }
             {
               block = "docker";
@@ -413,19 +408,14 @@ in
             {
               block = "disk_space";
               path = "/";
-              alias = "/";
               info_type = "available";
-              unit = "GB";
-              alert_absolute = true;
+              alert_unit = "GB";
               interval = 60;
               warning = 15.0;
               alert = 8.0;
             }
             {
               block = "memory";
-              display_type = "memory";
-              format_mem = "{mem_used_percents}";
-              format_swap = "{swap_used_percents}";
             }
             {
               block = "cpu";
@@ -440,14 +430,9 @@ in
             {
               block = "time";
               interval = 60;
-              format = "%a %m/%d %l:%M %p";
+              format = " $icon $timestamp.datetime(f:'%a %m/%d %l:%M %p')";
             }
           ];
-          settings = {
-            theme = {
-              name = "dracula";
-            };
-          };
           icons = "material-nf";
           theme = "dracula";
         };
