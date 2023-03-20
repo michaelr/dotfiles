@@ -416,6 +416,7 @@ in
             }
             {
               block = "memory";
+              format = " $icon $mem_avail.eng(prefix:M)($mem_used_percents.eng(w:2))";
             }
             {
               block = "cpu";
