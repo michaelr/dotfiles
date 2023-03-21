@@ -1,4 +1,4 @@
-{ lib, pkgs, config, modulesPath, ... }:
+{ lib, pkgs, config, modulesPath, inputs, ... }:
 
 with lib;
 let
@@ -255,7 +255,7 @@ in
         whatsapp-for-linux
         inkscape-with-extensions
 
-      ] ++ bin;
+      ] ++ bin ++ [ inputs.devenv.packages.x86_64-linux.devenv ];
 
       file = {
         ".background-image".source = imgsPath + "/nixos-background-dracula.png";
