@@ -252,7 +252,6 @@ in
         volumeicon
         i3wsr # i3 workspace renamer
         discord
-        whatsapp-for-linux
         inkscape-with-extensions
         slack
 
