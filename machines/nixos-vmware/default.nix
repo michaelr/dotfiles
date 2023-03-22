@@ -254,6 +254,7 @@ in
         discord
         whatsapp-for-linux
         inkscape-with-extensions
+        slack
 
       ] ++ bin ++ [ inputs.devenv.packages.x86_64-linux.devenv ];
 
